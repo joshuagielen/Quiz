@@ -1,0 +1,28 @@
+
+
+.fb-page{
+	
+	float: right;
+}
+.error{
+	display: inline-block;
+}
+form{
+	float:left;
+	width: 50%;
+
+	
+}
+
+
+footer{
+	background-color: black;
+	text-align: center;
+	color: white;
+	vertical-align: middle;
+	height:10%;
+	position:absolute;
+	bottom:0;
+	width:100%;
+
+}
