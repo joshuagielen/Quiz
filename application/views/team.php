@@ -29,7 +29,7 @@ function add_fields() {
     player++;
     var objTo = document.getElementById('players')
     var divtest = document.createElement("div");
-    divtest.innerHTML = '<div class="form-group" ><label for="playerName">Player ' + player + ' name</label><input type="text" class="form-control" id="playerName" placeholder="Enter name of Player" name="playerName" value=""><span class="text-danger"></span></div>';
+    divtest.innerHTML = '<div class="form-group" ><label for="playerName">Player ' + player + ' name</label><input type="text" class="form-control" id="playerName" placeholder="Enter name of Player" name="playerName[]" value=""><span class="text-danger"></span></div>';
     
     objTo.appendChild(divtest)
 }
@@ -49,20 +49,20 @@ function add_fields() {
         <div class="col-xs-6">
         	<h1>Nieuw Team</h1>
             <?php $attributes = array("class" => "form-horizontal", "name" => "contactform");
-            echo form_open("index.php/Team/index", $attributes);?>
+            echo form_open("http://" . base_url() . "Team/index", $attributes);?>
 
 
 
 				<div class="form-group" >
             		<label for="teamName">Team name</label>
-            		<input type="text" class="form-control" id="teamName" placeholder="Enter name of Team" name="teamName" value=''>
+            		<input type="text" class="form-control" id="teamName" placeholder="Enter name of Team" name="teamName" value='<?php echo set_value('teamName'); ?>'>
             		<span class="text-danger"><?php echo form_error('teamName'); ?></span>
         		</div>
 
         		<div id="players">
         		<div class="form-group" >
             		<label for="playerName">Player 1 name</label>
-            		<input type="text" class="form-control" id="playerName" placeholder="Enter name of Player" name="playerName" value=''>
+            		<input type="text" class="form-control" id="playerName" placeholder="Enter name of Player" name="playerName[]" value=''>
             		<span class='text-danger'></span>
         		</div>
 

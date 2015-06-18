@@ -20,7 +20,7 @@
 	<h1>Welkom</h1>
 
 	
-		<a href="http://localhost/Quiz/index.php/Team/" class="btn btn-default btn-lg" role="button">Deelnemen aan Quiz</a>
+		<a href="http://<?php echo base_url('/Team/index')?>" class="btn btn-default btn-lg" role="button">Deelnemen aan Quiz</a>
 		
 
 </div>

@@ -2,29 +2,36 @@
 
 class TeamModel extends CI_Model{
 
-	public function getData(){
-		$query = $this->db->get('klanten');
+	function getId($teamName){
+		$teamId = $this->db->select('teamId')
+                  ->get_where('teams', array('teamName' => $teamName))
+                  ->row()
+                  ->teamId;
+
+
+		return $teamId;
+	}
+
+	function getData(){
+		$query = $this->db->get('teams');
 		return $query->result();
 	}
 
-	public function insertData($data){
-		$query = $this->db->insert('teams',$data);
+	function insertData($table, $data){
+		$query = $this->db->insert($table, $data);
 		return true;
 	}
-	public function generate_password($length = 8, $complex=1) {
-		$min = "abcdefghijklmnopqrstuvwxyz";
-		$num = "0123456789";
-		$maj = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		$symb = "!@#$%^&*()_-=+;:,.?";
+	function generate_password($length = 4) {
+
+		$min = "0123456789";
+
 		$chars = $min;
-		if ($complex >= 2) { $chars .= $num; }
-		if ($complex >= 3) { $chars .= $maj; }
-		if ($complex >= 4) { $chars .= $symb; }
+
 		$password = substr( str_shuffle( $chars ), 0, $length );
 		return $password;
 	}
 
-	public function role_exists($teamName)
+	function role_exists($teamName)
 	{
     $this->db->where('teamName',$teamName);
     $query = $this->db->get('teams');
