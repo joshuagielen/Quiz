@@ -19,9 +19,9 @@
 
 	<h1>Welkom</h1>
 
-	<form method="Post" action="#">
-		<input class="btn btn-lg" type="submit" value="Deelnemen aan Quiz">
-	</form>
+	
+		<a href="http://localhost/Quiz/index.php/Team/" class="btn btn-default btn-lg" role="button">Deelnemen aan Quiz</a>
+		
 
 </div>
 
