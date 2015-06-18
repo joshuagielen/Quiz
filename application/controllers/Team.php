@@ -47,7 +47,7 @@ class Team extends CI_Controller {
                
                
             
-
+                $playerInsertok = True;
 
 		
 
@@ -56,15 +56,25 @@ class Team extends CI_Controller {
                  $teamId = $this->TeamModel->getId($teamName);
 
                    $playerData = array();
+                   $i=0;
                     foreach( $players as $player ) {
-                        $playerData = array(
+
+                        $playerData[$i] = array(
                             "playerName" => $player,
                             "teamId" => $teamId
                         );
+
+                        
+                        if(!($this->TeamModel->insertData('players',$playerData[$i])))
+                        {
+                            $playerInsertok = False;
+                        }
+
+                        $i++;
                     }
 
 
-                if ($this->TeamModel->insertData('players',$playerData) )
+                if ($playerInsertok)
                 {  
                    
 
