@@ -28,8 +28,8 @@
                         <a href="http://<?php echo base_url();?>index.php/Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Rounds <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#rounds"><i class="fa fa-fw fa-arrows-v"></i> Rounds <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="rounds" class="collapse">
                             <li>
                                 <a href="#">Round1</a>
                             </li>
@@ -48,13 +48,13 @@
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Clients</a>
                     </li>
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Teams <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                        <a href="javascript:;" data-toggle="collapse" data-target="#teams"><i class="fa fa-fw fa-arrows-v"></i> Teams <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="teams" class="collapse">
                             <li>
-                                <a href="#">Team1</a>
+                                <a href="<?php echo "http://" . base_url() . "Admin/teams/1"?>">Team1</a>
                             </li>
                             <li>
-                                <a href="#">Team2</a>
+                                <a href="<?php echo "http://" . base_url() . "Admin/teams/2"?>" . base_url() . "Admin/teams/2">Team2</a>
                             </li>
                         </ul>
                     </li>
@@ -62,11 +62,6 @@
                 </ul>
             </div>
         </nav>
-	</div>
-    <script src="http://<?php echo base_url();?>assets/js/jquery.js"></script>
-    <script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-    <script src="http://<?php echo base_url();?>assets/js/plugins/morris/raphael.min.js"></script>
-    <script src="http://<?php echo base_url();?>assets/js/plugins/morris/morris.min.js"></script>
-    <script src="http://<?php echo base_url();?>assets/js/plugins/morris/morris-data.js"></script>
-</body>
-</html>
+
+
+       

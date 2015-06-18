@@ -12,9 +12,20 @@ class TeamModel extends CI_Model{
 		return $teamId;
 	}
 
-	function getData(){
-		$query = $this->db->get('teams');
+	function getData($table){
+		$query = $this->db->get($table);
 		return $query->result();
+	}
+
+	function getPlayersById($teamId){
+		$query = $this->db->get_where('players', array('teamId' => $teamId));
+		return $query->result();
+	}
+
+
+
+	function getTeamById($teamId){
+		return $this->db->get_where('teams', array('teamId' => $teamId))->row();
 	}
 
 	function insertData($table, $data){
