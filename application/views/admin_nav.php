@@ -14,6 +14,9 @@
     <link href="http://<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet" type="text/css">
     <link href="http://<?php echo base_url();?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
 
+    
+
+
 	
 </head>
 <body>
@@ -50,12 +53,22 @@
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#teams"><i class="fa fa-fw fa-arrows-v"></i> Teams <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="teams" class="collapse">
+
+
+                            <?php
+                              foreach ($teamsnav as $team) {
+                                    echo "<li><a href='http://" . base_url() . "Admin/teams/" . $team->teamId . "'>" . $team->teamName . "</a></li>";  
+                            }
+
+
+                            ?>
+
+
+
                             <li>
-                                <a href="<?php echo "http://" . base_url() . "Admin/teams/1"?>">Team1</a>
+                                <a href="<?php echo "http://" . base_url() . "Admin/newTeam"?>">New team</a>
                             </li>
-                            <li>
-                                <a href="<?php echo "http://" . base_url() . "Admin/teams/2"?>" . base_url() . "Admin/teams/2">Team2</a>
-                            </li>
+                            
                         </ul>
                     </li>
                     

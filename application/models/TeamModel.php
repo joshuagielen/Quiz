@@ -2,6 +2,26 @@
 
 class TeamModel extends CI_Model{
 
+
+	function deletePlayer($playerId){
+		$query = $this->db->delete('players', array('playerId' => $playerId)); 
+		return true;
+	}
+	function updatePlayer($playerId, $data){
+		$query = $this->db->where('playerId', $playerId)->update('players', $data);
+		return true;
+	}
+	function deleteTeam($teamId){
+		$query = $this->db->delete('teams', array('teamId' => $teamId)); 
+		return true;
+	}
+
+
+	function updateTeam($teamId, $data){
+		$query = $this->db->where('teamId', $teamId)->update('teams', $data);
+		return true;
+	}
+
 	function getId($teamName){
 		$teamId = $this->db->select('teamId')
                   ->get_where('teams', array('teamName' => $teamName))
@@ -11,7 +31,7 @@ class TeamModel extends CI_Model{
 
 		return $teamId;
 	}
-
+	
 	function getData($table){
 		$query = $this->db->get($table);
 		return $query->result();
@@ -34,9 +54,7 @@ class TeamModel extends CI_Model{
 	}
 	function generate_password($length = 4) {
 
-		$min = "0123456789";
-
-		$chars = $min;
+		$chars = "0123456789";
 
 		$password = substr( str_shuffle( $chars ), 0, $length );
 		return $password;

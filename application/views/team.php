@@ -24,15 +24,15 @@
 
     <script>
 
-var player = 1;
-function add_fields() {
-    player++;
-    var objTo = document.getElementById('players')
-    var divtest = document.createElement("div");
-    divtest.innerHTML = '<div class="form-group" ><label for="playerName">Player ' + player + ' name</label><input type="text" class="form-control" id="playerName" placeholder="Enter name of Player" name="playerName[]" value=""><span class="text-danger"></span></div>';
-    
-    objTo.appendChild(divtest)
-}
+        var player = 1;
+        function add_fields() {
+            player++;
+            var objTo = document.getElementById('players')
+            var divtest = document.createElement("div");
+            divtest.innerHTML = '<div class="form-group" ><label for="playerName">Player ' + player + ' name</label><input type="text" class="form-control" id="playerName" placeholder="Enter name of Player" name="playerName[]" value=""><span class="text-danger"></span></div>';
+            
+            objTo.appendChild(divtest)
+        }
 
     </script>
 	
