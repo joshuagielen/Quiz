@@ -18,10 +18,9 @@
 <script src="http://<?php echo base_url();?>assets/js/jquery.min.js"></script>
 <script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script src="http://<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
+
 <script src="http://<?php echo base_url();?>assets/js/socketio.js"></script>
-
 <script>
-
 	askQuestion = function(rId, qId){
 		console.log("question: " + qId + "\nround: " + rId);
 		window.location = "http://<?php echo base_url();?>question/" + rId + "/" + qId;
@@ -34,11 +33,7 @@
 	socket = io.connect('http://artemis:8080', {'sync disconnect on unload': true });
 
 	this.socket.on('Question', askQuestion);
-	this.socket.on('EndRound', endRound);
-
-
-
-	
+	this.socket.on('EndRound', endRound);	
 </script>
 
 
