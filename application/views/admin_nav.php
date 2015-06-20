@@ -33,8 +33,8 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
             	<ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="http://<?php echo base_url();?>Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    <li class="active">                    
+                        <a href="http://<?php echo base_url();?>Admin/dashBoard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#rounds"><i class="fa fa-fw fa-arrows-v"></i> Rounds <i class="fa fa-fw fa-caret-down"></i></a>
