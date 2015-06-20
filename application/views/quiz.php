@@ -15,9 +15,29 @@
 <link href="http://<?php echo base_url();?>assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
 <!-- JavaScript -->
-<script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script src="http://<?php echo base_url();?>assets/js/jquery.min.js"></script>
+<script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script src="http://<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
+<script src="http://<?php echo base_url();?>assets/js/socketio.js"></script>
+
+<script>
+
+	askQuestion = function(rId, qId){
+		console.log("question: " + qId + "\nround: " + rId);
+	};
+	endRound = function(rId){
+		console.log("End of round: " + rId);
+	};
+
+	socket = io.connect('http://artemis:8080', {'sync disconnect on unload': true });
+
+	this.socket.on('Question', askQuestion);
+	this.socket.on('EndRound', endRound);
+
+
+
+	
+</script>
 
 
     

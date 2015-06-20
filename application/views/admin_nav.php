@@ -23,13 +23,13 @@
 	<div id="wrapper">
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
-            	<a class="navbar-brand" href="http://<?php echo base_url();?>index.php/Admin">Quiz Admin</a>
+            	<a class="navbar-brand" href="http://<?php echo base_url();?>Admin">Quiz Admin</a>
                 <?php echo "<a class='navbar-brand' href='http://" . base_url() . "Admin/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
             	<ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="http://<?php echo base_url();?>index.php/Admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="http://<?php echo base_url();?>Admin/dashBoard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#rounds"><i class="fa fa-fw fa-arrows-v"></i> Rounds <i class="fa fa-fw fa-caret-down"></i></a>

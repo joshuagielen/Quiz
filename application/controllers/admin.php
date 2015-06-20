@@ -25,14 +25,16 @@ class Admin extends CI_Controller {
 
 
 
+ 
+
  public function index()
  {
-  $this->load->helper('url');
-  $this->load->model('TeamModel');
-  $data['teamsnav'] = $this->TeamModel->getTeamData();
 
-  $this->load->view('admin_nav',$data);
-  $this->load->view('admin_footer');
+  $this->dashboard();
+  /*$this->load->helper('url');
+
+  $this->load->view('admin_nav',$this->loadTeamData());
+  $this->load->view('admin_footer');*/
 }
 
 public function login(){
@@ -111,9 +113,9 @@ public function login(){
               $data['teams'] =  $this->TeamModel->getTeamById($teamId);
               $data['players'] =  $this->PlayerModel->getPlayersById($teamId);
 
-              $data['teamsnav'] = $this->TeamModel->getTeamData();
+              
 
-              $this->load->view('admin_nav',$data);
+              $this->load->view('admin_nav',$this->loadTeamData());
               $this->load->view('admin_team',$data);
               $this->load->view('admin_footer');
 
@@ -221,9 +223,8 @@ public function login(){
             public function newTeam(){
               $this->load->helper('url');
               $this->load->model('TeamModel');
-              $data['teamsnav'] = $this->TeamModel->getTeamData();
 
-              $this->load->view('admin_nav',$data);
+              $this->load->view('admin_nav',$this->loadTeamData());
               $this->load->view('admin_add_team');
 
               $this->load->view('admin_footer');
@@ -246,8 +247,7 @@ public function login(){
               {
           //validation fails
                 $this->load->helper('url');
-                $data['teamsnav'] = $this->TeamModel->getTeamData();
-                $this->load->view('admin_nav',$data);
+                $this->load->view('admin_nav',$this->loadTeamData());
                 $this->load->view('admin_add_team');
                 $this->load->view('admin_footer');
               }
@@ -409,6 +409,22 @@ public function login(){
 
             }
     
+  }
+  public function dashboard(){
+
+    $this->load->helper('url');
+
+
+    $this->load->view('admin_nav', $this->loadTeamData());
+    $this->load->view('admin_dashboard');
+
+    $this->load->view('admin_footer');
+  }
+
+  private function loadTeamData(){
+    $this->load->model('TeamModel');
+    $data['teamsnav'] = $this->TeamModel->getTeamData();
+    return $data;
   }
 
 
