@@ -22,14 +22,13 @@ class RoundModel extends CI_Model{
 
 	function getRound($roundId){
 			return $this->db->get_where('rounds', array('roundId' => $roundId))->row();
+	}	
+
+	function getRoundById($rId){
+		$query = $this->db->get_where('rounds', array('roundId' => $rId))->row();
+		return $query;
 	}
-	
-
-	
-
-
-	
-
 
 }
+
 ?>

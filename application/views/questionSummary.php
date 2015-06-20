@@ -5,8 +5,8 @@
 
 
 		<div class="jumbotron">
-  			<h1>Question</h1>
-  			<p><?php echo $questionData->questionValue ?></p>
+  			<h1>Round</h1>
+  			<p><?php echo $roundData->roundName ?></p>
 		</div>
 
 
