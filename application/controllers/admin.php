@@ -241,6 +241,7 @@ public function login(){
 
 
         //run validation on form input
+
               if ($this->form_validation->run() == FALSE || empty($_POST['teamName']) )
               {
           //validation fails
@@ -263,6 +264,7 @@ public function login(){
                   "teamColor" => $teamColor,
                   "teamPassword" => $wachtwoord
                   );
+
 
 
 
@@ -330,6 +332,84 @@ public function login(){
 
 
           }
+
+  public function questions(){
+
+    $this->load->helper('url');
+    $this->load->model('QuestionModel');
+    $this->load->model('TeamModel');
+    $data['teamsnav'] = $this->TeamModel->getData('teams');
+    $data['questions'] = $this->QuestionModel->getQuestions();
+
+    $this->load->view('admin_nav', $data);
+    $this->load->view('admin_questions');
+
+    $this->load->view('admin_footer');
+
+  }
+
+  public function deleteQuestion($questionId){
+      $this->load->helper('url');
+
+    $this->load->model('QuestionModel');
+     
+
+    if ($this->QuestionModel->deleteQuestion($questionId))
+            {
+               redirect('http://' . base_url('admin/questions'));
+
+            }
+
+  }
+  public function updateQuestion(){
+      $this->load->helper('url');
+
+    $this->load->model('QuestionModel');
+            $questionId = $this->input->post("questionId");
+            $questionValue = $this->input->post("questionValue");
+            $questionType = $this->input->post("questionType");
+            $questionGenre = $this->input->post("questionGenre");
+
+
+
+
+            $questionData = array(
+               'questionValue' => $questionValue,
+              'questionType' => $questionType,
+              'questionGenre' => $questionGenre,
+            );
+
+            if ($this->QuestionModel->updateQuestion($questionId, $questionData))
+            {
+               redirect('http://' . base_url('admin/questions'));
+
+            }
+    
+  }
+  public function addQuestion(){
+    $this->load->helper('url');
+
+    $this->load->model('QuestionModel');
+            $questionId = $this->input->post("questionId");
+            $questionValue = $this->input->post("questionValue");
+            $questionType = $this->input->post("questionType");
+            $questionGenre = $this->input->post("questionGenre");
+
+
+
+            $questionData = array(
+               'questionValue' => $questionValue,
+              'questionType' => $questionType,
+              'questionGenre' => $questionGenre,
+            );
+
+            if ($this->QuestionModel->insertQuestion($questionData))
+            {
+               redirect('http://' . base_url('admin/questions'));
+
+            }
+    
+  }
 
 
 
