@@ -1,9 +1,19 @@
-<div class="container text-center">
-
-
+<!-- JavaScript -->
 <script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 <script src="http://<?php echo base_url();?>assets/js/jquery.min.js"></script>
 <script src="http://<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
+<script>
+    $(function(){
+        $('.demo1').colorpicker();
+    });
+</script>
+
+
+<div class="container text-center">
+
+
+
+
 
 <script>
 
@@ -21,7 +31,7 @@
 
     <h1>Nieuw Team</h1>
             <?php $attributes = array("class" => "form-horizontal", "name" => "contactform");
-            echo form_open("http://" . base_url() . "Admin/addNewTeam", $attributes);?>
+            echo form_open("http://" . base_url() . "Team/registerTeam", $attributes);?>
 
 
 
@@ -30,7 +40,6 @@
                     <input type="text" class="form-control" id="teamName" placeholder="Enter name of Team" name="teamName" value='<?php echo set_value('teamName'); ?>'>
                     <span class="text-danger"><?php echo form_error('teamName'); ?></span>
                 </div>
-
                 <div class="form-group" >
                     <label for="teamColor">Team color</label>
                     <div class="input-group demo1">
@@ -50,9 +59,9 @@
                 <a href="#"  onclick="add_fields();"  class="btn btn-lg" role="button"><span class="glyphicon glyphicon-plus-sign"></span></a></br>
 
 
-                <input class="btn btn-lg" type="submit" value="Team toevoegen">
+                <input class="btn btn-lg" type="submit" value="Add team" name="addTeam">
             <?php echo form_close(); ?>
-            <?php echo $this->session->flashdata('msg'); ?>
+            <?php echo $this->session->flashdata('teamMsg'); ?>
 
 
                  

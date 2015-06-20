@@ -46,7 +46,9 @@ class Team extends CI_Controller {
                          //set the session variables
                          $sessiondata = array(
                               'username' => $teamName,
-                              'logged_in' => TRUE
+                              'normalUser' => TRUE,
+                              'teamName' => $teamName
+
                          );
                          $this->session->set_userdata($sessiondata);
                          redirect('http://' . base_url('/Quiz/index'));

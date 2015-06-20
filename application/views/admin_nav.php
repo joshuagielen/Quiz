@@ -10,9 +10,14 @@
     <meta name="author" content="Joshua Gielen">
 
     <link href="http://<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="http://<?php echo base_url();?>assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
     <link href="http://<?php echo base_url();?>assets/css/sb-admin.css" rel="stylesheet" type="text/css">
     <link href="http://<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet" type="text/css">
     <link href="http://<?php echo base_url();?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    
+
+    
 
     
 

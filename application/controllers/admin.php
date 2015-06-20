@@ -338,7 +338,7 @@ public function login(){
     $this->load->helper('url');
     $this->load->model('QuestionModel');
     $this->load->model('TeamModel');
-    $data['teamsnav'] = $this->TeamModel->getData('teams');
+    $data['teamsnav'] = $this->TeamModel->getTeamData('teams');
     $data['questions'] = $this->QuestionModel->getQuestions();
 
     $this->load->view('admin_nav', $data);
