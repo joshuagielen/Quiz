@@ -110,9 +110,9 @@ class Team extends CI_Controller {
 
 		
 
-            if ($this->TeamModel->insertData('teams',$teamData) )
+            if ($this->TeamModel->insertTeam($teamData) )
             {    
-                 $teamId = $this->TeamModel->getId($teamName);
+                 $teamId = $this->TeamModel->getTeamId($teamName);
 
                    $playerData = array();
                    $i=0;
@@ -123,8 +123,8 @@ class Team extends CI_Controller {
                             "teamId" => $teamId
                         );
 
-                        
-                        if(!($this->TeamModel->insertData('players',$playerData[$i])))
+                        $this->load->model('PlayerModel');
+                        if(!($this->PlayerModel->insertPlayer($playerData[$i])))
                         {
                             $playerInsertok = False;
                         }

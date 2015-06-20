@@ -1,5 +1,10 @@
 <div class="container text-center">
 
+
+<script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+<script src="http://<?php echo base_url();?>assets/js/jquery.min.js"></script>
+<script src="http://<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
+
 <script>
 
         var player = 1;
@@ -24,6 +29,14 @@
                     <label for="teamName">Team name</label>
                     <input type="text" class="form-control" id="teamName" placeholder="Enter name of Team" name="teamName" value='<?php echo set_value('teamName'); ?>'>
                     <span class="text-danger"><?php echo form_error('teamName'); ?></span>
+                </div>
+
+                <div class="form-group" >
+                    <label for="teamColor">Team color</label>
+                    <div class="input-group demo1">
+                        <input type="text" value="" name="teamColor" class="form-control" />
+                        <span class="input-group-addon"><i></i></span>
+                    </div>
                 </div>
 
                 <div id="players">

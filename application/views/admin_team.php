@@ -109,14 +109,11 @@
                             
                             echo "<input type='hidden' name='playerId' value='" . $player->playerId . "' />";
                              echo "<input type='hidden' name='teamId' value='" . $teams->teamId . "' />";
-                            echo "<div class='form-group' >
-                                    <label for='playerName'>Old player name</label>
-                                    <input type='text' class='form-control' id='playerName' placeholder='Enter name of Player' name='oldPlayerName' disabled value='". $player->playerName ." '>
-                                </div>";
+                            
 
                              echo "<div class='form-group' >
-                                    <label for='playerName'>New player name</label>
-                                    <input type='text' class='form-control' id='playerName' placeholder='Enter name of Player' name='newPlayerName' autofocus value=''>
+                                    <label for='playerName'>Player name</label>
+                                    <input type='text' class='form-control' id='playerName' placeholder='Enter name of Player' name='newPlayerName' autofocus value='". $player->playerName ."'>
                                  </div>";
 
                             echo "<input type='submit' value='change player' name='change' />";
@@ -130,15 +127,11 @@
 
                     <div id='team<?php echo $teams->teamId ?>'><div id='myModal' class='reveal-modal'>"
                         <form method='post' action='http://<?php echo base_url()?>admin/updateTeam'>
-                       <input type='hidden' name='teamId' value='<?php echo $teams->teamId ?>' />
-                        <div class='form-group' >
-                                    <label for='teamName'>Old team name</label>
-                                    <input type='text' class='form-control' id='teamName' placeholder='Enter name of Team' name='oldTeamName' disabled value='<?php echo$teams->teamName?>'>
-                                </div>
+                       <input type='hidden' name='teamId' value='<?php echo $teams->teamId ?>' />                        
 
                         <div class='form-group' >
                                     <label for='newTeamName'>New team name</label>
-                                    <input type='text' class='form-control' id='newTeamName' placeholder='Enter name of Team' name='newTeamName' autofocus value=''>
+                                    <input type='text' class='form-control' id='TeamName' placeholder='Enter name of Team' name='newTeamName' autofocus value='<?php echo$teams->teamName?>'>
                                  </div>
 
                         <input type='submit' value='change team' name='change' />
