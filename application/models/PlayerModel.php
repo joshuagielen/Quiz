@@ -37,5 +37,12 @@
 			$query = $this->db->insert('players', $data);
 			return true;
 		}
+		/*
+		function getPlayersByTeamName($teamName);
+
+			$teamId = $this->getId($teamName);
+			$query = $this->db->get_where('players', array('teamId' => $teamId));
+			return $query->result();
+		}*/
 	}
 ?>

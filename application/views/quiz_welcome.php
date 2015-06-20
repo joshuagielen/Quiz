@@ -5,13 +5,13 @@
 
 
 		<div class="jumbotron">
-  			<h1>Hello, Team!</h1>
+  			<h1>Hello, <?php echo $teamName?>!</h1>
   			<p>Quiz start binnen enkele ogenblikken</p>
   			<p><a class="btn btn-primary btn-lg" href="#" role="button">Show your competitors</a></p>
 		</div>
 
 
-
+<!--
 	<?php
 		echo "<ul class='list-group'> ";
 		foreach ($players as $player) {
@@ -20,7 +20,7 @@
 	    echo "</ul>";
 	?>
 		
-
+-->
 
 
 		

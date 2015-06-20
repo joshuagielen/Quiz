@@ -108,6 +108,8 @@ public function login(){
 
               $this->load->model('TeamModel');
               $this->load->model('PlayerModel');
+              $this->load->model('RoundModel');
+              $data['roundsnav'] = $this->RoundModel->getRounds();
 
 
               $data['teams'] =  $this->TeamModel->getTeamById($teamId);
@@ -338,6 +340,8 @@ public function login(){
     $this->load->helper('url');
     $this->load->model('QuestionModel');
     $this->load->model('TeamModel');
+    $this->load->model('RoundModel');
+    $data['roundsnav'] = $this->RoundModel->getRounds();
     $data['teamsnav'] = $this->TeamModel->getTeamData('teams');
     $data['questions'] = $this->QuestionModel->getQuestions();
 
@@ -410,12 +414,53 @@ public function login(){
             }
     
   }
+
+  public function round($roundId){
+
+    $this->load->helper('url');
+    $this->load->model('QuestionQueueModel');
+    $this->load->model('QuestionModel');
+    $this->load->model('TeamModel');
+    $this->load->model('RoundModel');
+    $data['roundsnav'] = $this->RoundModel->getRounds();
+     $data['roundRow'] = $this->RoundModel->getRound($roundId);
+    
+    $data['teamsnav'] = $this->TeamModel->getTeamData();
+
+    $data['questionqueues'] = $this->QuestionQueueModel->getQuestionsByRound($roundId);
+    $data['questions'] = $this->QuestionModel->getQuestions();
+    $this->load->view('admin_nav', $data);
+    $this->load->view('admin_round',$data);
+    $this->load->view('admin_footer');
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   public function dashboard(){
 
     $this->load->helper('url');
 
+    $this->load->model('RoundModel');
+    $data = $this->loadTeamData();
+    $data['roundsnav'] = $this->RoundModel->getRounds();
 
-    $this->load->view('admin_nav', $this->loadTeamData());
+    $this->load->view('admin_nav', $data);
     $this->load->view('admin_dashboard');
 
     $this->load->view('admin_footer');

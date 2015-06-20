@@ -39,12 +39,10 @@
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#rounds"><i class="fa fa-fw fa-arrows-v"></i> Rounds <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="rounds" class="collapse">
-                            <li>
-                                <a href="#">Round1</a>
-                            </li>
-                            <li>
-                                <a href="#">Round2</a>
-                            </li>
+                            <?php
+                              foreach ($roundsnav as $round) {
+                                    echo "<li><a href='http://" . base_url() . "Admin/Round/" . $round->roundId . "'>" . $round->roundName . "</a></li>";  
+                            }?>
                         </ul>
                     </li>
                     <li>
