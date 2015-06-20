@@ -28,7 +28,7 @@
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
             	<ul class="nav navbar-nav side-nav">
-                    <li class="active">
+                    <li class="active">                    
                         <a href="http://<?php echo base_url();?>Admin/dashBoard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
@@ -43,7 +43,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Questions</a>
+                        <a href="http://<?php echo base_url();?>Admin/Questions"><i class="fa fa-fw fa-bar-chart-o"></i> Questions</a>
                     </li>                   
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Scores</a>
