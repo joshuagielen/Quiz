@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class question extends CI_Controller {
+class Question extends CI_Controller {
 
 	/**
 	 * Index Page for this controller.
@@ -21,11 +21,26 @@ class question extends CI_Controller {
 	public function index($rId, $qId)
 	{
 		$this->load->helper('url');
-		$this->load->view('question');
+		$this->load->model('QuestionModel');
+		$this->load->model('RoundModel');
+
+		$questionData = $this->QuestionModel->getQuestionById($qId);
+		$roundData = $this->RoundModel->getRoundById($rId);
+
+		$data['questionData'] = $questionData;
+		$data['roundData'] = $roundData;
+
+		$this->load->view('quiz_nav', $data);
+		$this->load->view('question', $data);
 	}
 	public function summary($rId)
 	{
 		$this->load->helper('url');
-		$this->load->view('questionSummary');
+		$this->load->model('RoundModel');
+		$roundData = $this->RoundModel->getRoundById($rId);
+		$data['roundData'] = $roundData;
+
+		$this->load->view('quiz_nav');
+		$this->load->view('questionSummary', $data);
 	}
 }

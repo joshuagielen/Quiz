@@ -12,7 +12,7 @@
 			return true;
 		}	
 
-		function getId($teamName){
+		/*function getId($teamName){
 			$teamId = $this->db->select('teamId')
 	                  ->get_where('teams', array('teamName' => $teamName))
 	                  ->row()
@@ -20,7 +20,7 @@
 
 
 			return $teamId;
-		}
+		}*/
 		
 		function getData($table){
 			$query = $this->db->get($table);
