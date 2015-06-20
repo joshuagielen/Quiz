@@ -5,11 +5,6 @@
     <link rel="stylesheet" href="http://<?php echo base_url();?>assets/css/reveal.css">
     <script src="http://<?php echo base_url();?>assets/js/jquery-1.4.4.min.js" type="text/javascript"></script>
     <script src="http://<?php echo base_url();?>assets/js/jquery.reveal.js" type="text/javascript"></script>
-
-
-
-
-
     <script>
         $(document).ready(function(){
             $('a').on('click',function(){
@@ -33,16 +28,39 @@
            return false;
           }
         }
+
+        function submitenter(myfield,e)
+        {
+            var keycode;
+            if (window.event) keycode = window.event.keyCode;
+            else if (e) keycode = e.which;
+            else return true;
+
+            if (keycode == 13)
+               {
+               myfield.form.submit();
+               return false;
+               }
+            else
+               return true;
+        }
     </script>
 
 
-                <?php echo "<h1>" . $teams->teamName . "<a href='#team" . $teams->teamId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'><span class='glyphicon glyphicon-edit'></span></a>
+
+   <div class="page-header">
+    <?php echo "<h1>" . $teams->teamName . "<a href='#team" . $teams->teamId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'><span class='glyphicon glyphicon-edit'></span></a>
                 <a href='http://" . base_url() . "admin/deleteTeam/" .  $teams->teamId ." ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a></h1>";?>
 
-                <h2>Password: <?php echo $teams->teamPassword?></h2>
+ <h2>Password: <?php echo $teams->teamPassword?></h2>
+ <canvas id="myCanvas" width="100" height="50" style="background-color:<?php echo $teams->teamColor?>"></canvas>
+</div>
+
+                
+                
 
 
-                <table class="table table-hover">
+                <table class="table table-bordered">
                 <thead>
                 <tr><th class="text-center">ID</th><th class="text-center">Name</th><th class="text-center">Team ID</th><th class="text-center">Action</th></tr></thead>
                 <tbody>
@@ -57,7 +75,17 @@
                         }
 
                     ?>
+                <tr><td></td><td>
+                        <form method='post' action='http://<?php echo base_url()?>admin/addPlayer'>
+                           <input type='hidden' name='teamId' value='<?php echo $teams->teamId ?>' />
+                           <input type="text" class="form-control" id="playerName" placeholder="Enter name of Player and press enter" name="playerName" onKeyPress="return submitenter(this,event)">
+                        </form>
+                        
 
+
+
+                    </td></tr>
+                
 
                     
                 </tbody>

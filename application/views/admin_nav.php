@@ -24,6 +24,7 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
             	<a class="navbar-brand" href="http://<?php echo base_url();?>index.php/Admin">Quiz Admin</a>
+                <?php echo "<a class='navbar-brand' href='http://" . base_url() . "Admin/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?>
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
             	<ul class="nav navbar-nav side-nav">

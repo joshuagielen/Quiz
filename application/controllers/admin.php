@@ -6,8 +6,21 @@ class Admin extends CI_Controller {
 	 public function __construct()
     {
         parent::__construct();
-        $this->load->helper(array('form','url'));
+        $this->load->helper('url');
         $this->load->library(array('session', 'form_validation'));
+    
+        if ( ! $this->session->userdata('admin'))
+        {    
+        // Allow some methods?
+        $allowed = array(
+            'login'
+        );
+        if ( ! in_array($this->router->fetch_method(), $allowed))
+        {
+           redirect('http://' . base_url('/Admin/login'));
+        }
+        }
+    
     }
 
 
@@ -22,7 +35,67 @@ class Admin extends CI_Controller {
 		$this->load->view('admin_footer');
 	}
 
-	public function teams($teamId){
+	public function login(){
+
+
+        //get the posted values
+          $adminName = $this->input->post("adminName");
+          $adminPassword = $this->input->post("adminPassword");
+
+          //set validations
+          $this->form_validation->set_rules("adminName", "adminName", "trim|required");
+          $this->form_validation->set_rules("adminPassword", "adminPassword", "trim|required");
+
+          if ($this->form_validation->run() == FALSE)
+          {
+               //validation fails
+                $this->load->view('admin_login');
+          }
+          else
+          {
+               //validation succeeds
+               if (isset( $_POST['loginAdmin'] ))
+               {
+                    //check if username and password is correct
+                    $this->load->model('LoginModel');
+                    $usr_result = $this->LoginModel->get_user($adminName, $adminPassword, 'admins');
+                    if ($usr_result > 0) //active user record is present
+                    {
+                         //set the session variables
+                         $sessiondata = array(
+                              'username' => $teamName,
+                              'logged_in' => TRUE,
+                              'admin' => TRUE
+                         );
+                         $this->session->set_userdata($sessiondata);
+                         redirect('http://' . base_url('/Admin/index'));
+                    }
+                    else
+                    {
+                         $this->session->set_flashdata('loginMsg', '<div class="alert alert-danger text-center">Invalid name and password!</div>');
+                         redirect('http://' . base_url('/Admin/login'));
+                    }
+               }
+               else
+               {
+                $this->session->set_flashdata('loginMsg', '<div class="alert alert-danger text-center">Something went wrong, contact one of the admins</div>');
+                         redirect('http://' . base_url('/Admin/login'));
+                   
+               }
+          }
+
+    }
+
+    public function logOut(){
+        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('admin');
+        $this->session->sess_destroy();
+        redirect('http://' . base_url('/Admin/'));
+    }
+
+
+    public function teams($teamId){
 
 		//get team from database
 		$this->load->helper('url');
@@ -43,6 +116,28 @@ class Admin extends CI_Controller {
 		$this->load->view('admin_team',$data);
 		$this->load->view('admin_footer');
 
+
+	}
+	public function addPlayer(){
+		$this->load->helper('url');
+
+		$this->load->model('TeamModel');
+			$playerName = $this->input->post("playerName");
+            $teamId = $this->input->post("teamId");
+
+
+
+
+            $data = array(
+               'playerName' => $playerName,
+               'teamId' => $teamId
+            );
+
+            if ($this->TeamModel->insertData('players', $data))
+            {
+            	 redirect('http://' . base_url('admin/teams') ."/" .$teamId);
+
+            }
 
 	}
 

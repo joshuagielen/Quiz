@@ -37,7 +37,7 @@
                 <a href="#"  onclick="add_fields();"  class="btn btn-lg" role="button"><span class="glyphicon glyphicon-plus-sign"></span></a></br>
 
 
-                <input class="btn btn-lg" type="submit" value="Deelnemen aan Quiz">
+                <input class="btn btn-lg" type="submit" value="Team toevoegen">
             <?php echo form_close(); ?>
             <?php echo $this->session->flashdata('msg'); ?>
 
