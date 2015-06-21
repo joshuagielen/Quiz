@@ -37,6 +37,27 @@
 			$query = $this->db->insert('players', $data);
 			return true;
 		}
+		function getPlayersByTeamName($teamName){
+		
+			$this->db->select('p.playerName AS playerName');
+		    $this->db->from('players AS p');
+		    $this->db->join('teams AS t', 't.teamId=p.teamId');
+		    $this->db->where('t.teamName',$teamName);
+		    $query=$this->db->get();
+
+		   
+
+
+
+
+		    return $query->result();
+			
+			
+	}
+
+
+
+
 		/*
 		function getPlayersByTeamName($teamName);
 

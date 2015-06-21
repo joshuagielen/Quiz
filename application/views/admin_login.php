@@ -19,10 +19,11 @@
     <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   </head>
   <body id="login">
-    <div class="container text-center">
+    <div class="container ">
 
-      <div class="row">
-          <div class="col-xs-3">
+      <div class="row row-centered">
+        <h1>Control Panel</h1>
+          <div class="col-md-4 col-centered">
 
                       <?php $attributes = array("class" => "form-horizontal", "name" => "contactform");
                       echo form_open("http://" . base_url() . "Admin/login", $attributes);?>

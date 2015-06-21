@@ -30,9 +30,10 @@ class Quiz extends CI_Controller {
     public function index(){
 
         
-        $data['teamName'] = $this->session->userdata('username');
-
-
+        $teamName = $this->session->userdata('username');
+        $data['teamName'] = $teamName;
+         $this->load->model('PlayerModel');
+         $data['players'] = $this->PlayerModel->getPlayersByTeamName( $teamName);
         $this->load->view('quiz_nav');
         $this->load->view('quiz_welcome', $data);
         

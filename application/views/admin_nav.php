@@ -32,15 +32,26 @@
             <div class="navbar-header">
             	<a class="navbar-brand" href="http://<?php echo base_url();?>Admin">Quiz Admin</a>
                 <?php echo "<a class='navbar-brand' href='http://" . base_url() . "Admin/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?>
+                <ul class="nav navbar-nav navbar-right">
+        <li><?php echo "<a href='http://" . base_url() . "Quiz/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?></li>
+        
+      </ul>
+
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
             	<ul class="nav navbar-nav side-nav">
                     <li class="active">                    
                         <a href="http://<?php echo base_url();?>Admin/dashBoard"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
+
                     <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#rounds"><i class="fa fa-fw fa-arrows-v"></i> Rounds <i class="fa fa-fw fa-caret-down"></i></a>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#rounds"><span class="fa fa-fw fa-arrows-v"></span> Rounds</span></a>
+
+
                         <ul id="rounds" class="collapse">
+                            <li>
+                                <a href="<?php echo "http://" . base_url() . "Admin/newRound"?>"><span class=" text-center glyphicon glyphicon-plus-sign"></span> New Round</a>
+                            </li>
                             <?php
                               foreach ($roundsnav as $round) {
                                     echo "<li><a href='http://" . base_url() . "Admin/Round/" . $round->roundId . "'>" . $round->roundName . "</a></li>";  
@@ -48,7 +59,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="http://<?php echo base_url();?>Admin/Questions"><i class="fa fa-fw fa-bar-chart-o"></i> Questions</a>
+                        <a href="http://<?php echo base_url();?>Admin/Questions"><sp class="fa fa-fw fa-bar-chart-o"></i> Questions</a>
                     </li>                   
                     <li>
                         <a href="tables.html"><i class="fa fa-fw fa-table"></i> Scores</a>
@@ -59,7 +70,9 @@
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#teams"><i class="fa fa-fw fa-arrows-v"></i> Teams <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="teams" class="collapse">
-
+                            <li>
+                                <a href="<?php echo "http://" . base_url() . "Admin/newTeam"?>"><span class=" text-center glyphicon glyphicon-plus-sign"></span> New Team</a>
+                            </li>
 
                             <?php
                               foreach ($teamsnav as $team) {
@@ -71,9 +84,7 @@
 
 
 
-                            <li>
-                                <a href="<?php echo "http://" . base_url() . "Admin/newTeam"?>">New team</a>
-                            </li>
+                            
                             
                         </ul>
                     </li>
