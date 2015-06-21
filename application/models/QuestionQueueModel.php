@@ -8,7 +8,8 @@ class QuestionQueueModel extends CI_Model{
 			$this->db->select('questions.questionValue AS question, q.sequenceNumber AS sequenceNumber, q.questionId AS questionId ');
 		    $this->db->from('questionqueue AS q');
 		    $this->db->join('questions', 'questions.questionId=q.questionId');
-		    $this->db->where('roundId',$roundId);
+		    $this->db->where('roundId',$roundId);		    
+			$this->db->order_by("q.sequenceNumber", "asc"); 
 		    $query=$this->db->get();
 
 		   
