@@ -460,9 +460,10 @@ public function login(){
     $data = $this->loadTeamData();
     $data['roundsnav'] = $this->RoundModel->getRounds();
 
-    $this->load->view('admin_nav', $data);
-    $this->load->view('admin_dashboard');
 
+
+    $this->load->view('admin_nav', $data);
+    $this->load->view('admin_dashboard', $data);
     $this->load->view('admin_footer');
   }
 

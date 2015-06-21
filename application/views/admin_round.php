@@ -77,6 +77,11 @@
             type:'POST',
             url:'http://<?php echo base_url() ?>QuestionQueue/Update',
             data:p,
+            success:function(data){
+                $('#hed').html(data);
+                $('#hed').html('post success');
+                alert(data);
+            },
             error: function(a, b, c) {
               alert(a + ' ' + b + ' ' + c);
             }
