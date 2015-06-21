@@ -31,7 +31,7 @@
     window.location = "http://<?php echo base_url();?>question/summary/" + rId;
   };
 
-  socket = io.connect('http://localhost:8080', {'sync disconnect on unload': true });
+  socket = io.connect('http://localhost:8282', {'sync disconnect on unload': true });
 
   this.socket.on('Question', askQuestion);
   this.socket.on('EndRound', endRound); 
