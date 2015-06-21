@@ -15,7 +15,7 @@
   			<div class="col-md-8">
   				<div class="jumbotron">
 		  			<h1>Hello, <?php echo $teamName?>!</h1>
-		  			<p>Quiz start binnen enkele ogenblikken</p>
+		  			<p>Wait until the quizmaster starts the quizz!</p>
 		  			<p><a class="btn btn-primary btn-lg" href="#" role="button">Show your competitors</a></p>
 				</div>
   			</div>

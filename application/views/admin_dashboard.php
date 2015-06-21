@@ -40,7 +40,7 @@
 	var socket = io.connect('http://localhost:8282', {'sync disconnect on unload': true });
 	var questionSequence = 0;
 	var curRoundId = 0;
-	var jsonQqArray = <?php echo json_encode($qq); ?> + "";
+	var jsonQqArray = '<?php echo json_encode($qq); ?>';
 	var fullQuestionSequence = JSON.parse(jsonQqArray);
 
 	function forward(){

@@ -18,7 +18,7 @@
 <div class="row">
     <div class="col-xs-6">
       <?php
-        echo "<ul class='list-group text-left sortable'> ";
+        echo "<ul  class='list-group  text-left sortable' style='min-height: 100px'> ";
 
         $questionsInQueue = array();
         foreach ($questionqueues as $questionqueue){
@@ -44,7 +44,7 @@
 
     <div class="col-xs-6">
       <?php
-        echo "<ul id='roundqs' class='list-group text-left sortable'> ";
+        echo "<ul  id='roundqs' class='list-group text-left sortable' style='min-height: 100px'> ";
         foreach ($questionqueues as $questionqueue) {
               echo "<li class='list-group-item' id='" . $questionqueue->questionId . "'>" . $questionqueue->question  . "</li>";
         }
@@ -78,9 +78,9 @@
             url:'http://<?php echo base_url() ?>QuestionQueue/Update',
             data:p,
             success:function(data){
-                $('#hed').html(data);
+                /*$('#hed').html(data);
                 $('#hed').html('post success');
-                alert(data);
+                alert(data);*/
             },
             error: function(a, b, c) {
               alert(a + ' ' + b + ' ' + c);

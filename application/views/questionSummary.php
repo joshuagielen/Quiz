@@ -6,7 +6,8 @@
 
 		<div class="jumbotron">
   			<h1>Round</h1>
-  			<p><?php echo $roundData->roundName ?></p>
+  			<p>Dit is een testpagina </p>
+  			
 		</div>
 
 
