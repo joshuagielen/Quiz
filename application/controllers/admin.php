@@ -423,7 +423,7 @@ public function login(){
     $this->load->model('TeamModel');
     $this->load->model('RoundModel');
     $data['roundsnav'] = $this->RoundModel->getRounds();
-     $data['roundRow'] = $this->RoundModel->getRound($roundId);
+    $data['roundRow'] = $this->RoundModel->getRound($roundId);
     
     $data['teamsnav'] = $this->TeamModel->getTeamData();
 

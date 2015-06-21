@@ -15,6 +15,8 @@
     <link href="http://<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet" type="text/css">
     <link href="http://<?php echo base_url();?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
 
+    <script src="http://<?php echo base_url();?>assets/js/jquery.js"></script>
+
     
 
     
