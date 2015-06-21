@@ -37,7 +37,7 @@
 
 <script src="http://<?php echo base_url();?>assets/js/socketio.js"></script>
 <script>
-	var socket = io.connect('http://localhost:8282', {'sync disconnect on unload': true });
+	var socket = io.connect('http://192.168.1.25:8282', {'sync disconnect on unload': true });
 	var questionSequence = 0;
 	var curRoundId = 0;
 	var jsonQqArray = '<?php echo json_encode($qq); ?>';
