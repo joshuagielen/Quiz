@@ -23,5 +23,12 @@ class QuestionModel extends CI_Model{
 		$query = $this->db->get_where('questions', array('questionId' => $qId))->row();
 		return $query;
 	}
+
+	function rowExist($questionId){
+
+		
+
+	}
+	
 }
 ?>

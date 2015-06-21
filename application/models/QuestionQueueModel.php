@@ -32,6 +32,20 @@ class QuestionQueueModel extends CI_Model{
 		}		
 		
 	}
+
+	function getQuestionQueue(){
+		$this->db->select('q.questionId AS questionId, q.roundId AS roundId, q.sequenceNumber');
+		    $this->db->from('questionQueue AS q');
+		    $this->db->join('rounds AS r', 'r.roundId=q.roundId');
+		    $this->db->order_by("r.roundSequenceNumber", "asc");
+			$this->db->order_by("q.sequenceNumber", "asc"); 
+		    $query=$this->db->get();
+
+		    return $query->result();
+
+	}
+
+
 	
 
 	

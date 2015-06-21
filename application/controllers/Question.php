@@ -43,4 +43,8 @@ class Question extends CI_Controller {
 		$this->load->view('quiz_nav');
 		$this->load->view('questionSummary', $data);
 	}
+
+	function rowExist(){
+		
+	}
 }

@@ -534,9 +534,11 @@ public function login(){
     $this->load->helper('url');
 
     $this->load->model('RoundModel');
+    $this->load->model('QuestionQueueModel');
+    $this->load->model('QuestionQueueModel');
     $data = $this->loadTeamData();
     $data['roundsnav'] = $this->RoundModel->getRounds();
-
+    $data['qq'] = $this->QuestionQueueModel->getQuestionQueue();
 
 
     $this->load->view('admin_nav', $data);
