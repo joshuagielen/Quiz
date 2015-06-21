@@ -32,21 +32,40 @@
     </div>
 </div>
 <div class="container text-center">
-	<button onclick="requestQuestion()">Question</button>
-	<button onclick="requestEndRound()">End round</button>
+	<button onclick="forward()">Forward</button>
 </div>
 
 <script src="http://<?php echo base_url();?>assets/js/socketio.js"></script>
 <script>
-	var socket = io.connect('http://artemis:8080', {'sync disconnect on unload': true });
-	
-	function requestQuestion() {
-		socket.emit('requestQuestion', 1,4);
-		console.log("requestQuestion: " + 4);
+	var socket = io.connect('http://localhost:8080', {'sync disconnect on unload': true });
+	var questionSequence = 0;
+	var curRoundId = 0;
+	var jsonQqArray = <?php echo json_encode($qq); ?>;
+	var fullQuestionSequence = JSON.parse(jsonQqArray);
+
+	function forward(){
+		$('.sortable').sortable('disable');
+		if (fullQuestionSequence[questionSequence]['roundId'] == curRoundId){
+			requestQuestion(curRoundId, fullQuestionSequence[questionSequence]['questionId'])
+			questionSequence++;
+		}
+		else{
+			requestEndRound(curRoundId);
+			curRoundId = fullQuestionSequence[questionSequence]['roundId'];
+		}
+		
 	}
-	function requestEndRound() {
-		socket.emit('requestEndRound', 1);
-		console.log("requestEndRound: " + 1);
+
+
+
+	
+	function requestQuestion(rId,qId) {
+		socket.emit('requestQuestion', rId,qId);
+		console.log("requestQuestion: " + qId);
+	}
+	function requestEndRound(rId,qId) {
+		socket.emit('requestEndRound', rId);
+		console.log("requestEndRound: " + rId);
 	}
 	$(window).on('beforeunload', function(){
     	socket.close();
