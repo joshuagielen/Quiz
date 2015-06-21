@@ -440,12 +440,12 @@ public function login(){
 
     //set validation rules
               $this->form_validation->set_rules('roundName', 'roundName', 'required|is_unique[rounds.roundName]');
-              $this->form_validation->set_rules('sequenceNumber', 'sequenceNumber', 'required');
+              
 
 
               $this->load->model('RoundModel');
               $roundName = $this->input->post("roundName");
-              $sequenceNumber = $this->input->post("sequenceNumber");
+          
              
 
 
@@ -468,12 +468,12 @@ public function login(){
 
                 //Add Round
                 $roundName = $this->input->post("roundName");
-                $sequenceNumber = $this->input->post("sequenceNumber");
+              
                 
 
                 $roundData = array(
-                  "roundName" => $roundName,
-                  "roundSequenceNumber" => $sequenceNumber
+                  "roundName" => $roundName
+                  
                   );
 
 

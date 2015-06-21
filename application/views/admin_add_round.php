@@ -18,11 +18,7 @@
                     <input type="text" class="form-control" id="roundName" placeholder="Enter name of Round" name="roundName" value='<?php echo set_value('roundName'); ?>'>
                     <span class="text-danger"><?php echo form_error('roundName'); ?></span>
                 </div>
-                <div class="form-group" >
-                    <label for="sequenceNumber">Sequence number</label>
-                    <input type="text" class="form-control" id="sequenceNumber" placeholder="Enter sequence of Round" name="sequenceNumber" value=''>
-                    <span class="text-danger"><?php echo form_error('sequenceNumber'); ?></span>
-                </div>
+                
 
                 
 
