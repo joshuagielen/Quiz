@@ -45,10 +45,11 @@ class RoundModel extends CI_Model{
 							'roundSequenceNumber' => $normalRoundSeq
 						);
 
-				updateRound($roundId, $data);		
+				$this->updateRound($round->roundId, $data);
 			}
 			$normalRoundSeq++;
 		}
+		return true;
 	}
 
 	
