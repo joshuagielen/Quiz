@@ -7,7 +7,7 @@
     <script src="<?php echo base_url();?>assets/js/jquery.reveal.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
-            $('a').on('click',function(){
+            $('a').click(function(){
                 var aID = $(this).attr('href');
                 var elem = $(''+aID).html();
                 
@@ -68,10 +68,10 @@
                         foreach ($players as $player) {
                             echo "<tr><td>" . $player->playerId . "</td><td>" . $player->playerName  . "</td><td>" . $player->teamId . 
                             "</td><td>
-                            <a href='#player" . $player->playerId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'>
+                            <a href='#player" . $player->playerId . "' class='btn btn-lg' role='button' data-reveal-id='myModal'>
                             <span class='glyphicon glyphicon-edit'></span></a> 
 
-                            <a href='http://" . base_url() . "admin/deletePlayer/" .  $player->playerId . "/". $teams->teamId ." ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a></td></tr>";  
+                            <a href='" . base_url() . "admin/deletePlayer/" .  $player->playerId . "/". $teams->teamId ." ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a></td></tr>";  
                         }
 
                     ?>
@@ -119,6 +119,7 @@
                             echo "<input type='submit' value='change player' name='change' />";
                             echo "</form>";
                             echo "<a class='close-reveal-modal'>&#215;</a></div></div>";  
+                            echo "</br>";
                         }
 
                         

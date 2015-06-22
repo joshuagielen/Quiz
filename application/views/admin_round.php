@@ -54,7 +54,6 @@
       
   </div>
 </div>
-<div id="test"></div>
 <script src="<?php echo base_url();?>assets/js/html.sortable.src.js"></script>
       <script>
         $(".sortable").sortable({

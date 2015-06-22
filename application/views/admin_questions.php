@@ -1,6 +1,5 @@
-<div class="container text-center">
 
-
+<div class="container-fluid text-center">
   <!-- CSS & JQuery for popup login and register pane -->
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/reveal.css">
   <script src="<?php echo base_url();?>assets/js/jquery-1.4.4.min.js" type="text/javascript"></script>
@@ -8,7 +7,7 @@
   <script>
 
   $(document).ready(function(){
-    $('a').on('click',function(){
+    $('a').click(function(){
       var aID = $(this).attr('href');
       var elem = $(''+aID).html();
 
@@ -98,15 +97,16 @@ function validate()
         <a href='#question" . $question->questionId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'>
         <span class='glyphicon glyphicon-edit'></span></a> 
 
-        <a href='http://" . base_url() . "admin/deleteQuestion/" .  $question->questionId . " ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a></td></tr>";  
+        <a href='" . base_url() . "admin/deleteQuestion/" .  $question->questionId . " ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a></td></tr>";  
       }
 
       ?>
       <tr><td></td>
         <form method='post' action='<?php echo base_url()?>admin/addQuestion' name="addQuestion">
-         <td><input type='text' class="form-control" id="questionValue"  name='questionValue' placeholder="Enter question" value='' /></td>
-         <td><input type='text' class="form-control" id="questionType"  name='questionType' placeholder="Enter question type" value='' /></td>
+         
+         <td><input type='text' class="form-control" id="questionValue"  name='questionValue' placeholder="Enter question" value='' onKeyPress="return submitenter(this,event)"/></td>
          <td><input type="text" class="form-control" id="questionGenre" placeholder="Enter genre of question" name="questionGenre" onKeyPress="return submitenter(this,event)"></td>
+         <td><input type='text' class="form-control" id="questionType"  name='questionType' placeholder="Enter question type" value='' onKeyPress="return submitenter(this,event)"/></td>
        </form>
 
 
@@ -156,4 +156,27 @@ function validate()
 
 
 ?>
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
