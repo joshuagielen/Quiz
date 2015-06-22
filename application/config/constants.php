@@ -87,3 +87,7 @@ define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 //custom variables
 define('node_url','http://localhost:8282');
+
+//db status id's
+define('currentQuestionStatusId',4);
+define('currentRoundStatusId',5);

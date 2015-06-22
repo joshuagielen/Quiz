@@ -23,15 +23,31 @@ class StatusModel extends CI_Model{
 		$this->dbforge->add_field($fields);
 		$this->dbforge->add_key('statusId', TRUE);
 		$this->dbforge->create_table('status');
-		
+
+		$data = 	array(
+					   	array(
+						    'statusId' => $currentQuestionStatusId ,
+						    'statusName' => 'currentQuestion' ,
+						    'statusValue' => '0'
+					   	),
+					   	array(
+						    'statusId' => $currentRoundStatusId ,
+						    'statusName' => 'currentRound' ,
+						    'statusValue' => '0'
+					   	)
+					);
+
+		$this->db->insert_batch('status', $data);
 
 	}
 
+	function updateStatus($statusId, $value){
+		$data = array(	               
+	               'statusValue' => $value
+        		);
 
-	function updateStatus(status, value){
-
-
-		return true;
+		$this->db->where('statusId', $statusId);
+		$this->db->update('status', $data);
 	}
 }
 
