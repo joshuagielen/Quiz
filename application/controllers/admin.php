@@ -389,10 +389,9 @@ public function addNewTeam(){
     
     $data = $this->loadNavData();
     $data['roundRow'] = $this->RoundModel->getRound($roundId);
-    $data = $this->loadNavData();
-
     $data['questionqueues'] = $this->QuestionQueueModel->getQuestionsByRound($roundId);
     $data['questions'] = $this->QuestionModel->getQuestions();
+    
     $this->load->view('admin_nav', $data);
     $this->load->view('admin_round',$data);
     $this->load->view('admin_footer');

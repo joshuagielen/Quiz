@@ -59,10 +59,10 @@
                         <a href="<?php echo base_url();?>Admin/Questions"><sp class="fa fa-fw fa-bar-chart-o"></i> Questions</a>
                     </li>                   
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Scores</a>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> Scores</a>
                     </li>
                     <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Clients</a>
+                        <a href="#"><i class="fa fa-fw fa-table"></i> Clients</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#teams"><i class="fa fa-fw fa-arrows-v"></i> Teams <i class="fa fa-fw fa-caret-down"></i></a>
