@@ -4,8 +4,11 @@
 <div class="container text-center">
 <div class="row">
     <div class="col-xs-6">
+      
+
+
       <?php
-        echo "<ul id='roundList' class='list-group text-left sortable'> ";
+        echo "<ul id='roundList' class='list-group sortable'> ";
         $noSeqRounds = array();
         $seqRounds = array();
 
@@ -22,8 +25,8 @@
         
         
         for ($i=0;$i<count($seqRounds);$i++){
-            echo "<li class='list-group-item' id='" . $seqRounds[$i]->roundId . "'>" . $seqRounds[$i]->roundName  . "
-                  <a href='" . base_url() . "admin/deleteRound/" .  $seqRounds[$i]->roundId . " ' class='btn' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a>
+            echo "<li class='list-group-item' id='" . $seqRounds[$i]->roundId . "'><span class='badge'>14</span>" . $seqRounds[$i]->roundName  . "
+                  
 
 
             </li>";

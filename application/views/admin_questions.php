@@ -17,17 +17,17 @@
 
 
   function confirmation()
-  {
-   var r=confirm("are you sure to delete?")
-   if (r==true)
-   {
-    return true;
+  {    
+    var r=confirm("are you sure to delete?")
+    if (r==true)
+    {
+      return true;
+    }
+    else
+    {
+       return false;
+    }
   }
-  else
-  {
-   return false;
- }
-}
 
 function submitenter(myfield,e)
 {
