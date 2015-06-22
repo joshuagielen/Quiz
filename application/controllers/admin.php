@@ -93,7 +93,9 @@ public function login(){
               $this->session->unset_userdata('logged_in');
               $this->session->unset_userdata('admin');
               $this->session->sess_destroy();
+
               redirect(base_url('/Admin/'));
+
             }
 
 
@@ -110,9 +112,9 @@ public function login(){
               $this->load->model('PlayerModel');
               $this->load->model('RoundModel');
               $data = $this->loadTeamData();
+
+
               $data['roundsnav'] = $this->RoundModel->getRounds();
-
-
               $data['teams'] =  $this->TeamModel->getTeamById($teamId);
               $data['players'] =  $this->PlayerModel->getPlayersById($teamId);
 
@@ -439,59 +441,11 @@ public function login(){
   public function newRound(){
 
     //set validation rules
-              $this->form_validation->set_rules('roundName', 'roundName', 'required|is_unique[rounds.roundName]');
-              
+    $this->form_validation->set_rules('roundName', 'roundName', 'required|is_unique[rounds.roundName]');
+    
 
 
-              $this->load->model('RoundModel');
-              $roundName = $this->input->post("roundName");
-          
-             
-
-
-        //run validation on form input
-
-              if ($this->form_validation->run() == FALSE )
-              {
-              //validation fails
-                $this->load->helper('url');
-                $data = $this->loadTeamData();
-                $data['roundsnav'] = $this->RoundModel->getRounds();
-                $this->load->view('admin_nav', $data);
-                $this->load->model('RoundModel');
-                
-                $this->load->view('admin_add_round');
-                $this->load->view('admin_footer');
-              }
-              else
-              {
-
-                //Add Round
-                $roundName = $this->input->post("roundName");
-              
-                
-
-                $roundData = array(
-                  "roundName" => $roundName
-                  
-                  );
-
-
-
-
-
-                          
-
-
-
-
-
-                if ($this->RoundModel->insertRound($roundData) )
-                {    
-                                            
- 
-
-
+<<<<<<< HEAD
                 // team and players added
                   $this->session->set_flashdata('roundMsg','<div class="alert alert-success text-center">Round is succesfully added!</div>');
                   redirect(base_url('/Admin/newRound'));
@@ -503,36 +457,60 @@ public function login(){
                 $this->session->set_flashdata('roundMsg','<div class="alert alert-danger text-center">Something went wrong!</div>');
                 redirect(base_url('/Admin/newRound'));
               }
+=======
+    $this->load->model('RoundModel');
+    $roundName = $this->input->post("roundName");
+
+   
+>>>>>>> origin/master
 
 
-            }
+//run validation on form input
 
+    if ($this->form_validation->run() == FALSE )
+    {
+    //validation fails
+      $this->load->helper('url');
+      $data = $this->loadTeamData();
+      $data['roundsnav'] = $this->RoundModel->getRounds();
+      $this->load->view('admin_nav', $data);
+      $this->load->model('RoundModel');
+      
+      $this->load->view('admin_add_round');
+      $this->load->view('admin_footer');
+    }
+    else
+    {
 
+      //Add Round
+      $roundName = $this->input->post("roundName");
+    
+      
 
+      $roundData = array(
+        "roundName" => $roundName
+        
+      );
 
+      if ($this->RoundModel->insertRound($roundData) )
+      {
+      // team and players added
+        $this->session->set_flashdata('roundMsg','<div class="alert alert-success text-center">Round is succesfully added!</div>');
+        redirect('http://' . base_url('/Admin/newRound'));
+
+      }
+      else
+      {
+        //error
+        $this->session->set_flashdata('roundMsg','<div class="alert alert-danger text-center">Something went wrong!</div>');
+        redirect('http://' . base_url('/Admin/newRound'));
+      }
+    }
   }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   public function dashboard(){
 
     $this->load->helper('url');
-
     $this->load->model('RoundModel');
     $this->load->model('QuestionQueueModel');
     $this->load->model('QuestionQueueModel');

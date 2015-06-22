@@ -6,6 +6,7 @@
   <script src="<?php echo base_url();?>assets/js/jquery-1.4.4.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/js/jquery.reveal.js" type="text/javascript"></script>
   <script>
+
   $(document).ready(function(){
     $('a').on('click',function(){
       var aID = $(this).attr('href');
@@ -31,12 +32,6 @@
 
 function submitenter(myfield,e)
 {
-
-
-
-
-
-
   var keycode;
   if (window.event) keycode = window.event.keyCode;
   else if (e) keycode = e.which;
@@ -161,18 +156,4 @@ function validate()
 
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>

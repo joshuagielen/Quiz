@@ -58,15 +58,8 @@
 
 
 
+
 	
-	function requestQuestion(rId,qId) {
-		socket.emit('requestQuestion', rId,qId);
-		console.log("requestQuestion: " + qId);
-	}
-	function requestEndRound(rId,qId) {
-		socket.emit('requestEndRound', rId);
-		console.log("requestEndRound: " + rId);
-	}
 	$(window).on('beforeunload', function(){
     	socket.close();
 	});

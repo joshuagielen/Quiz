@@ -34,6 +34,7 @@
 
   socket = io.connect('<?php echo node_url?>', {'sync disconnect on unload': true });
 
+
   this.socket.on('Question', askQuestion);
   this.socket.on('EndRound', endRound); 
 </script>

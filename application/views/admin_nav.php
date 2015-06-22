@@ -32,10 +32,7 @@
             <div class="navbar-header">
             	<a class="navbar-brand" href="http://<?php echo base_url();?>Admin">Quiz Admin</a>
                 <?php echo "<a class='navbar-brand' href='http://" . base_url() . "Admin/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?>
-                <ul class="nav navbar-nav navbar-right">
-        <li><?php echo "<a href='" . base_url() . "Quiz/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?></li>
-        
-      </ul>
+
 
             </div>
             <div class="collapse navbar-collapse navbar-ex1-collapse">
