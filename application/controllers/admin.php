@@ -498,10 +498,13 @@ public function addNewTeam(){
     $this->load->model('StatusModel');
     $data = $this->loadNavData();
 
-    $currRound = $this->StatusModel->getStatus($currentRoundStatusId);
-    $currQuestion = $this->StatusModel->getStatus($currentQuestionStatusId);
+    $this->StatusModel->initQuiz();
 
-    $questionsForThisRound = $this->QuestionQueueModel->getQuestionsForRound($currRound);
+    $currRound = $this->StatusModel->getStatus(currentRoundStatusId);
+    $currQuestion = $this->StatusModel->getStatus(currentQuestionStatusId);
+
+
+    $questionsForThisRound = $this->QuestionQueueModel->getQuestionsByRound($currRound);
 
 
 

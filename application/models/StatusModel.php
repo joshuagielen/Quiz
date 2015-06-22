@@ -3,6 +3,7 @@
 class StatusModel extends CI_Model{
 
 	function initQuiz(){
+		$this->load->dbforge();
 		$this->dbforge->drop_table('status');
 		$fields = 	array(
                         'statusId' => 		array(
@@ -26,12 +27,12 @@ class StatusModel extends CI_Model{
 
 		$data = 	array(
 					   	array(
-						    'statusId' => $currentQuestionStatusId ,
+						    'statusId' => currentQuestionStatusId ,
 						    'statusName' => 'currentQuestion' ,
 						    'statusValue' => '0'
 					   	),
 					   	array(
-						    'statusId' => $currentRoundStatusId ,
+						    'statusId' => currentRoundStatusId ,
 						    'statusName' => 'currentRound' ,
 						    'statusValue' => '0'
 					   	)
