@@ -2,9 +2,9 @@
 
 
   <!-- CSS & JQuery for popup login and register pane -->
-  <link rel="stylesheet" href="http://<?php echo base_url();?>assets/css/reveal.css">
-  <script src="http://<?php echo base_url();?>assets/js/jquery-1.4.4.min.js" type="text/javascript"></script>
-  <script src="http://<?php echo base_url();?>assets/js/jquery.reveal.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/css/reveal.css">
+  <script src="<?php echo base_url();?>assets/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+  <script src="<?php echo base_url();?>assets/js/jquery.reveal.js" type="text/javascript"></script>
   <script>
   $(document).ready(function(){
     $('a').on('click',function(){
@@ -108,7 +108,7 @@ function validate()
 
       ?>
       <tr><td></td>
-        <form method='post' action='http://<?php echo base_url()?>admin/addQuestion' name="addQuestion">
+        <form method='post' action='<?php echo base_url()?>admin/addQuestion' name="addQuestion">
          <td><input type='text' class="form-control" id="questionValue"  name='questionValue' placeholder="Enter question" value='' /></td>
          <td><input type='text' class="form-control" id="questionType"  name='questionType' placeholder="Enter question type" value='' /></td>
          <td><input type="text" class="form-control" id="questionGenre" placeholder="Enter genre of question" name="questionGenre" onKeyPress="return submitenter(this,event)"></td>

@@ -1,7 +1,7 @@
 <div class="col-xs-3 col-md-offset-5">
         	<h1>Nieuw Team</h1>
             <?php $attributes = array("class" => "form-horizontal", "name" => "contactform");
-            echo form_open("http://" . base_url() . "Team/registerTeam", $attributes);?>
+            echo form_open(base_url() . "Team/registerTeam", $attributes);?>
 
 
 

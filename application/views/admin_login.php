@@ -4,10 +4,10 @@
     <title>Admin Login</title>
     <!-- Bootstrap -->
 
-    <link href="http://<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="http://<?php echo base_url();?>assets/css/sb-admin.css" rel="stylesheet" type="text/css">
-    <link href="http://<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet" type="text/css">
-    <link href="http://<?php echo base_url();?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>assets/css/sb-admin.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>assets/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -26,7 +26,7 @@
           <div class="col-md-4 col-centered">
 
                       <?php $attributes = array("class" => "form-horizontal", "name" => "contactform");
-                      echo form_open("http://" . base_url() . "Admin/login", $attributes);?>
+                      echo form_open(base_url() . "Admin/login", $attributes);?>
             
 
 

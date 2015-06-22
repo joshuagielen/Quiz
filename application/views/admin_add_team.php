@@ -1,7 +1,7 @@
 <!-- JavaScript -->
-<script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-<script src="http://<?php echo base_url();?>assets/js/jquery.min.js"></script>
-<script src="http://<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
 <script>
     $(function(){
         $('.demo1').colorpicker();
@@ -31,7 +31,7 @@
 
     <h1>Nieuw Team</h1>
             <?php $attributes = array("class" => "form-horizontal", "name" => "contactform");
-            echo form_open("http://" . base_url() . "Team/registerTeam", $attributes);?>
+            echo form_open(base_url() . "Team/registerTeam", $attributes);?>
 
 
 

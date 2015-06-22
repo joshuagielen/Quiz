@@ -2,9 +2,9 @@
 
 
     <!-- CSS & JQuery for popup login and register pane -->
-    <link rel="stylesheet" href="http://<?php echo base_url();?>assets/css/reveal.css">
-    <script src="http://<?php echo base_url();?>assets/js/jquery-1.4.4.min.js" type="text/javascript"></script>
-    <script src="http://<?php echo base_url();?>assets/js/jquery.reveal.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/css/reveal.css">
+    <script src="<?php echo base_url();?>assets/js/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script src="<?php echo base_url();?>assets/js/jquery.reveal.js" type="text/javascript"></script>
     <script>
         $(document).ready(function(){
             $('a').on('click',function(){
@@ -50,7 +50,7 @@
 
    <div class="page-header">
     <?php echo "<h1>" . $teams->teamName . "<a href='#team" . $teams->teamId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'><span class='glyphicon glyphicon-edit'></span></a>
-                <a href='http://" . base_url() . "admin/deleteTeam/" .  $teams->teamId ." ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a></h1>";?>
+                <a href='" . base_url() . "admin/deleteTeam/" .  $teams->teamId ." ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a></h1>";?>
 
  <h2>Password: <?php echo $teams->teamPassword?></h2>
  <canvas id="myCanvas" width="100" height="50" style="background-color:<?php echo $teams->teamColor?>"></canvas>
@@ -76,7 +76,7 @@
 
                     ?>
                 <tr><td></td><td>
-                        <form method='post' action='http://<?php echo base_url()?>admin/addPlayer'>
+                        <form method='post' action='<?php echo base_url()?>admin/addPlayer'>
                            <input type='hidden' name='teamId' value='<?php echo $teams->teamId ?>' />
                            <input type="text" class="form-control" id="playerName" placeholder="Enter name of Player and press enter" name="playerName" onKeyPress="return submitenter(this,event)">
                         </form>
@@ -105,7 +105,7 @@
                         foreach ($players as $player) {
 
                             echo "<div id='player". $player->playerId ."'><div id='myModal' class='reveal-modal'>";
-                            echo "<form method='post' action='http://" . base_url() . "admin/updatePlayer'>";
+                            echo "<form method='post' action='" . base_url() . "admin/updatePlayer'>";
                             
                             echo "<input type='hidden' name='playerId' value='" . $player->playerId . "' />";
                              echo "<input type='hidden' name='teamId' value='" . $teams->teamId . "' />";

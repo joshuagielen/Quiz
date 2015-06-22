@@ -35,9 +35,9 @@
 	<button onclick="forward()">Forward</button>
 </div>
 
-<script src="http://<?php echo base_url();?>assets/js/socketio.js"></script>
+<script src="<?php echo base_url();?>assets/js/socketio.js"></script>
 <script>
-	var socket = io.connect('http://192.168.1.25:8282', {'sync disconnect on unload': true });
+	var socket = io.connect('<?php echo node_url?>', {'sync disconnect on unload': true });
 	var questionSequence = 0;
 	var curRoundId = 0;
 	var jsonQqArray = '<?php echo json_encode($qq); ?>';
@@ -71,7 +71,7 @@
     	socket.close();
 	});
 </script>
-<script src="http://<?php echo base_url();?>assets/js/html.sortable.src.js"></script>
+<script src="<?php echo base_url();?>assets/js/html.sortable.src.js"></script>
       <script>
         $(".sortable").sortable({
           connectWith: '.js-connected'
@@ -90,7 +90,7 @@
 
           $.ajax({
             type:'POST',
-            url:'http://<?php echo base_url() ?>Rounds/Update',
+            url:'<?php echo base_url() ?>Rounds/Update',
             data:p,
             success:function(data){
             },

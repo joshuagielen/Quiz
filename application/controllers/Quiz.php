@@ -12,7 +12,7 @@ class Quiz extends CI_Controller {
 	
 	    if ( ! $this->session->userdata('normalUser') )
         { 
-             redirect('http://' . base_url('/Team/loginTeam'));
+             redirect(base_url('/Team/loginTeam'));
         }
 
 
@@ -31,7 +31,8 @@ class Quiz extends CI_Controller {
 
         
         $teamName = $this->session->userdata('username');
-        $data['teamName'] = $teamName;
+        $teamColor = $this->session->userdata('teamColor');
+        $data['teamInfo'] = array('teamName' => $teamName, 'teamColor' => $teamColor);
          $this->load->model('PlayerModel');
          $data['players'] = $this->PlayerModel->getPlayersByTeamName( $teamName);
         $this->load->view('quiz_nav');
@@ -44,7 +45,7 @@ class Quiz extends CI_Controller {
     	$this->session->unset_userdata('username');
 		$this->session->unset_userdata('normalUser');
 		$this->session->sess_destroy();
-		redirect('http://' . base_url('/Team/loginTeam'));
+		redirect(base_url('/Team/loginTeam'));
     }
 
 

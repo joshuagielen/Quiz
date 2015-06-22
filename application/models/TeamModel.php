@@ -24,6 +24,16 @@
 
 			return $teamId;
 		}
+
+		function getTeamColor($teamName){
+			$teamColor = $this->db->select('teamColor')
+	                  ->get_where('teams', array('teamName' => $teamName))
+	                  ->row()
+	                  ->teamColor;
+
+
+			return $teamColor;
+		}
 		
 		function getTeamData(){
 			$query = $this->db->get('teams');

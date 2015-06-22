@@ -10,28 +10,29 @@
 
 
        <!-- CSS -->
-<link rel="stylesheet" href="http://<?php echo base_url();?>assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://<?php echo base_url();?>assets/css/bootstrap-theme.min.css">
-<link href="http://<?php echo base_url();?>assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap-theme.min.css">
+<link href="<?php echo base_url();?>assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
 <!-- JavaScript -->
-<script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-<script src="http://<?php echo base_url();?>assets/js/jquery.min.js"></script>
-<script src="http://<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+
+<script src="<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
 
 <!-- redirect for next question/end round -->
-<script src="http://<?php echo base_url();?>assets/js/socketio.js"></script>
+<script src="<?php echo base_url();?>assets/js/socketio.js"></script>
 <script>
   askQuestion = function(rId, qId){
     console.log("question: " + qId + "\nround: " + rId);
-    window.location = "http://<?php echo base_url();?>question/index/" + rId + "/" + qId;
+    window.location = "<?php echo base_url();?>question/index/" + rId + "/" + qId;
   };
   endRound = function(rId){
     console.log("End of round: " + rId);    
-    window.location = "http://<?php echo base_url();?>question/summary/" + rId;
+    window.location = "<?php echo base_url();?>question/summary/" + rId;
   };
 
-  socket = io.connect('http://localhost:8282', {'sync disconnect on unload': true });
+  socket = io.connect('<?php echo node_url?>', {'sync disconnect on unload': true });
 
   this.socket.on('Question', askQuestion);
   this.socket.on('EndRound', endRound); 
@@ -44,7 +45,7 @@
 <body>
 
 <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div id="teamColor" class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -61,7 +62,7 @@
       
       
       <ul class="nav navbar-nav navbar-right">
-        <li><?php echo "<a href='http://" . base_url() . "Quiz/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?></li>
+        <li><?php echo "<a href='" . base_url() . "Quiz/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?></li>
         
       </ul>
     </div><!-- /.navbar-collapse -->

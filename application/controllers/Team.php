@@ -43,27 +43,34 @@ class Team extends CI_Controller {
                     $usr_result = $this->LoginModel->get_user($teamName, $teamPassword, 'teams');
                     if ($usr_result > 0) //active user record is present
                     {
+
+
+                      //get teamcolor
+                      $this->load->model('TeamModel');
+                      $teamColor = $this->TeamModel->getTeamColor($teamName);
+                      
                          //set the session variables
                          $sessiondata = array(
                               'username' => $teamName,
                               'normalUser' => TRUE,
-                              'teamName' => $teamName
+                              'teamName' => $teamName,
+                              'teamColor' => $teamColor
 
                          );
                          $this->session->set_userdata($sessiondata);
-                         redirect('http://' . base_url('/Quiz/index'));
+                         redirect(base_url('/Quiz'));
                     }
                     else
                     {
                          $this->session->set_flashdata('loginMsg', '<div class="alert alert-danger text-center">Invalid teamname and password!</div>');
-                         redirect('http://' . base_url('/Team/loginTeam'));
+                         redirect(base_url('/Team/loginTeam'));
                     }
                }
                else
                {
                 $this->session->set_flashdata('loginMsg', '<div class="alert alert-danger text-center">Something went wrong, contact one of the admins</div>');
-                         redirect('http://' . base_url('/Team/loginTeam'));
-                    redirect('http://' . base_url('/Team/loginTeam'));
+                    redirect(base_url('/Team/loginTeam'));
+                    
                }
           }
     }
@@ -91,14 +98,14 @@ class Team extends CI_Controller {
             $this->load->model('TeamModel');
             $teamName = $this->input->post("teamName");
             $teamColor = $this->input->post("teamColor");
-            $wachtwoord = $this->TeamModel->generate_password(4);
+            $teamPassword = $this->TeamModel->generate_password(4);
         	$teamData = array(
 				"teamName" => $teamName,
 				"teamColor" => $teamColor,
-				"teamPassword" => $wachtwoord
+				"teamPassword" => $teamPassword
 			);
 
-            
+              
             
 
             //add players 
@@ -140,8 +147,16 @@ class Team extends CI_Controller {
                    
 
                 // team and players added
-                $this->session->set_flashdata('teamMsg','<div class="alert alert-success text-center">Jouw team is succesvol toevoegd! </br>wachtwoord: <b> ' . $wachtwoord . '</b></br>TeamId: ' . $teamId . '</div>');
-                redirect('http://' . base_url('/Team/index'));
+                  $flashdata = "<div class='alert alert-success text-center'>Jouw team is succesvol toevoegd! </br>Team name:" . $teamName . "</br>Team color: 
+                  <canvas id='myCanvas' width='12' height='12' style='background-color:" .  $teamColor . "'></canvas>  </br>wachtwoord: <b>" . $teamPassword . "</b></div>";
+
+
+
+                $this->session->set_flashdata('teamMsg',$flashdata);
+               
+
+
+                redirect(base_url('/Team/index'));
 
                 }
                 
@@ -154,7 +169,7 @@ class Team extends CI_Controller {
             {
                 //error
                 $this->session->set_flashdata('teamMsg','<div class="alert alert-danger text-center">Er is een fout opgetreden bij het aanmaken van het team</div>');
-                redirect('http://' . base_url('/Team/index'));
+                redirect(base_url('/Team/index'));
             }
 
         

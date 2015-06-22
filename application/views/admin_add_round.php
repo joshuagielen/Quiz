@@ -9,7 +9,7 @@
 
     <h1>New Round</h1>
             <?php $attributes = array("class" => "form-horizontal", "name" => "contactform");
-            echo form_open("http://" . base_url() . "Admin/newRound", $attributes);?>
+            echo form_open(base_url() . "Admin/newRound", $attributes);?>
 
 
 

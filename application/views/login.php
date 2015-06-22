@@ -9,14 +9,14 @@
     <meta name="author" content="">
 
     <!-- CSS -->
-<link rel="stylesheet" href="http://<?php echo base_url();?>assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="http://<?php echo base_url();?>assets/css/bootstrap-theme.min.css">
-<link href="http://<?php echo base_url();?>assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css">
+<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap-theme.min.css">
+<link href="<?php echo base_url();?>assets/css/bootstrap-colorpicker.min.css" rel="stylesheet">
 
 <!-- JavaScript -->
-<script src="http://<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
-<script src="http://<?php echo base_url();?>assets/js/jquery.min.js"></script>
-<script src="http://<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/jquery.min.js"></script>
+<script src="<?php echo base_url();?>assets/js/bootstrap-colorpicker.min.js"></script>
 <script>
     $(function(){
         $('.demo1').colorpicker();
@@ -64,7 +64,7 @@
       
       
       <ul class="nav navbar-nav navbar-right">
-        <li><?php echo "<a href='http://" . base_url() . "Admin'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-wrench'></span></a>"; ?></li>
+        <li><?php echo "<a href='" . base_url() . "Admin'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-wrench'></span></a>"; ?></li>
         
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -79,7 +79,7 @@
         <div class="col-xs-3">
             <h1>Log In</h1>
             <?php $attributes = array("class" => "form-horizontal", "name" => "contactform");
-            echo form_open("http://" . base_url() . "Team/loginTeam", $attributes);?>
+            echo form_open(base_url() . "Team/loginTeam", $attributes);?>
             
 
 

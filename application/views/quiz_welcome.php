@@ -1,4 +1,9 @@
+	<style>
+	#teamColor{
+		background-color: <?php echo $teamInfo['teamColor']?>;
+	}
 
+	</style>
 	
 	<div class="container text-center">
 		<div class="row">
@@ -14,7 +19,7 @@
   			</div>
   			<div class="col-md-8">
   				<div class="jumbotron">
-		  			<h1>Hello, <?php echo $teamName?>!</h1>
+		  			<h1>Hello, <?php echo $teamInfo['teamName']?>!</h1>
 		  			<p>Wait until the quizmaster starts the quizz!</p>
 		  			<p><a class="btn btn-primary btn-lg" href="#" role="button">Show your competitors</a></p>
 				</div>

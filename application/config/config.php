@@ -17,7 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'localhost/Quiz/';
+$config['base_url'] = 'http://localhost/Quiz/';
+
 
 /*$config['base_url'] = '192.168.1.11/Quiz/';*/
 

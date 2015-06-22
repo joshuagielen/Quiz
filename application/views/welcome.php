@@ -9,7 +9,7 @@
     <meta name="author" content="">
 
 
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url()?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 
 
     
@@ -34,7 +34,7 @@
       
       
       <ul class="nav navbar-nav navbar-right">
-        <li><?php echo "<a href='http://" . base_url() . "Admin'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-wrench'></span></a>"; ?></li>
+        <li><?php echo "<a href='" . base_url() . "Admin'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-wrench'></span></a>"; ?></li>
         
       </ul>
     </div><!-- /.navbar-collapse -->
@@ -46,7 +46,7 @@
 	<h1>Welkom</h1>
 
 	
-		<a href="http://<?php echo base_url('/Team/index')?>" class="btn btn-default btn-lg" role="button">Deelnemen aan Quiz</a>
+		<a href="<?php echo base_url('/Team/index')?>" class="btn btn-default btn-lg" role="button">Deelnemen aan Quiz</a>
 		
 
 </div>

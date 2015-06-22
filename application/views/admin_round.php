@@ -55,7 +55,7 @@
   </div>
 </div>
 <div id="test"></div>
-<script src="http://<?php echo base_url();?>assets/js/html.sortable.src.js"></script>
+<script src="<?php echo base_url();?>assets/js/html.sortable.src.js"></script>
       <script>
         $(".sortable").sortable({
           connectWith: '.js-connected'
@@ -75,7 +75,7 @@
 
           $.ajax({
             type:'POST',
-            url:'http://<?php echo base_url() ?>QuestionQueue/Update',
+            url:'<?php echo base_url() ?>QuestionQueue/Update',
             data:p,
             success:function(data){},
             error: function(a, b, c) {

@@ -17,7 +17,7 @@ class Admin extends CI_Controller {
         );
       if ( ! in_array($this->router->fetch_method(), $allowed))
       {
-       redirect('http://' . base_url('/Admin/login'));
+       redirect(base_url('/Admin/login'));
      }
    }
 
@@ -70,18 +70,18 @@ public function login(){
                       'admin' => TRUE
                       );
                      $this->session->set_userdata($sessiondata);
-                     redirect('http://' . base_url('/Admin/index'));
+                     redirect(base_url('/Admin/index'));
                    }
                    else
                    {
                      $this->session->set_flashdata('loginMsg', '<div class="alert alert-danger text-center">Invalid name and password!</div>');
-                     redirect('http://' . base_url('/Admin/login'));
+                     redirect(base_url('/Admin/login'));
                    }
                  }
                  else
                  {
                   $this->session->set_flashdata('loginMsg', '<div class="alert alert-danger text-center">Something went wrong, contact one of the admins</div>');
-                  redirect('http://' . base_url('/Admin/login'));
+                  redirect(base_url('/Admin/login'));
 
                 }
               }
@@ -93,7 +93,7 @@ public function login(){
               $this->session->unset_userdata('logged_in');
               $this->session->unset_userdata('admin');
               $this->session->sess_destroy();
-              redirect('http://' . base_url('/Admin/'));
+              redirect(base_url('/Admin/'));
             }
 
 
@@ -141,7 +141,7 @@ public function login(){
 
               if ($this->PlayerModel->insertPlayer($data))
               {
-                redirect('http://' . base_url('admin/teams') ."/" .$teamId);
+                redirect(base_url('admin/teams') ."/" .$teamId);
 
               }
 
@@ -165,7 +165,7 @@ public function login(){
 
               if ($this->PlayerModel->updatePlayer($playerId, $data))
               {
-                redirect('http://' . base_url('admin/teams') ."/" .$teamId);
+                redirect(base_url('admin/teams') ."/" .$teamId);
 
               }
 
@@ -187,7 +187,7 @@ public function login(){
 
               if ($this->TeamModel->updateTeam($teamId, $data))
               {
-                redirect('http://' . base_url('admin/teams') ."/" .$teamId);
+                redirect(base_url('admin/teams') ."/" .$teamId);
 
               }
 
@@ -202,7 +202,7 @@ public function login(){
 
               if ($this->PlayerModel->deletePlayer($playerId))
               {
-                redirect('http://' . base_url('admin/teams') ."/" .$teamId);
+                redirect(base_url('admin/teams') ."/" .$teamId);
 
               }
 
@@ -216,7 +216,7 @@ public function login(){
 
               if ($this->TeamModel->deleteTeam($teamId))
               {
-                redirect('http://' . base_url('admin/index'));
+                redirect(base_url('admin/index'));
 
               }
 
@@ -312,7 +312,7 @@ public function login(){
 
                 // team and players added
                   $this->session->set_flashdata('msg','<div class="alert alert-success text-center">team is succesvol toevoegd! </br>wachtwoord: <b> ' . $wachtwoord . '</b></br>TeamId: ' . $teamId . '</div>');
-                  redirect('http://' . base_url('/Admin/newTeam'));
+                  redirect(base_url('/Admin/newTeam'));
 
                 }
                 
@@ -325,7 +325,7 @@ public function login(){
               {
                 //error
                 $this->session->set_flashdata('msg','<div class="alert alert-danger text-center">Er is een fout opgetreden bij het aanmaken van het team</div>');
-                redirect('http://' . base_url('/Admin/newTeam'));
+                redirect(base_url('/Admin/newTeam'));
               }
 
 
@@ -361,7 +361,7 @@ public function login(){
 
     if ($this->QuestionModel->deleteQuestion($questionId))
             {
-               redirect('http://' . base_url('admin/questions'));
+               redirect(base_url('admin/questions'));
 
             }
 
@@ -386,7 +386,7 @@ public function login(){
 
             if ($this->QuestionModel->updateQuestion($questionId, $questionData))
             {
-               redirect('http://' . base_url('admin/questions'));
+               redirect(base_url('admin/questions'));
 
             }
     
@@ -410,7 +410,7 @@ public function login(){
 
             if ($this->QuestionModel->insertQuestion($questionData))
             {
-               redirect('http://' . base_url('admin/questions'));
+               redirect(base_url('admin/questions'));
 
             }
     
@@ -494,14 +494,14 @@ public function login(){
 
                 // team and players added
                   $this->session->set_flashdata('roundMsg','<div class="alert alert-success text-center">Round is succesfully added!</div>');
-                  redirect('http://' . base_url('/Admin/newRound'));
+                  redirect(base_url('/Admin/newRound'));
 
               }
               else
               {
                 //error
                 $this->session->set_flashdata('roundMsg','<div class="alert alert-danger text-center">Something went wrong!</div>');
-                redirect('http://' . base_url('/Admin/newRound'));
+                redirect(base_url('/Admin/newRound'));
               }
 
 
