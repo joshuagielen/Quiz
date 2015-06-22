@@ -50,7 +50,9 @@
         }
         echo "</ul>";
         ?>
-      </div>
+    </div>
+
+    <a href='<?php echo base_url('Admin/newRound')?>' class='btn'><i class='icon-white icon-circle-arrow-left'></i> back to overview</a>
       
   </div>
 </div>
