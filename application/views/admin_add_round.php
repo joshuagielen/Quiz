@@ -25,7 +25,7 @@
         
         
         for ($i=0;$i<count($seqRounds);$i++){
-            echo "<li class='list-group-item' id='" . $seqRounds[$i]->roundId . "'>" . $seqRounds[$i]->roundName  . " <a class='pull-right'  href='" . base_url() . "admin/deleteQuestion/" .  $seqRounds[$i]->roundId . " ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class=' pull-right glyphicon glyphicon-remove'></span></a>
+            echo "<li class='list-group-item' id='" . $seqRounds[$i]->roundId . "'>" . $seqRounds[$i]->roundName  . " <a class='pull-right'  href='" . base_url() . "admin/deleteRound/" .  $seqRounds[$i]->roundId . " ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class=' pull-right glyphicon glyphicon-remove'></span></a>
                       <a class='pull-right' href='#round" . $seqRounds[$i]->roundId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'><span class='glyphicon glyphicon-edit'></span></a> 
                   
 
