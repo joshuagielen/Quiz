@@ -16,6 +16,7 @@ class RoundModel extends CI_Model{
 		return true;
 	}
 	function getRounds(){
+		$this->db->order_by("roundSequenceNumber", "asc"); 
 		$query = $this->db->get('rounds');
 		return $query->result();
 	}
@@ -34,6 +35,20 @@ class RoundModel extends CI_Model{
                   ->row()
                   ->roundId;
 		return $roundId;
+	}
+	function fixSequenceError(){
+		$rounds = $this->getRounds();
+		$normalRoundSeq = 0;
+		foreach ($rounds as $round){
+			if ($round->roundSequenceNumber != $normalRoundSeq){
+				$data =	array(
+							'roundSequenceNumber' => $normalRoundSeq
+						);
+
+				updateRound($roundId, $data);		
+			}
+			$normalRoundSeq++;
+		}
 	}
 
 	

@@ -387,6 +387,8 @@ public function addNewTeam(){
 
     if ($this->RoundModel->deleteRound($roundId))
     {
+      $this->RoundModel->fixSequenceError();
+
       redirect(base_url('admin/newRound'));
 
     }
