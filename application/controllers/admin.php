@@ -451,8 +451,10 @@ public function addNewTeam(){
     $this->load->helper('url');
     $this->load->model('RoundModel');
     $this->load->model('QuestionQueueModel');
+
     $this->load->model('QuestionQueueModel');
     $data = $this->loadNavData();
+
     $data['qq'] = $this->QuestionQueueModel->getQuestionQueue();
 
 
@@ -469,9 +471,6 @@ public function addNewTeam(){
     $data['teamsnav'] = $this->TeamModel->getTeamData();
     return $data;
   }
-
-
-
-        }
+}
 
 
