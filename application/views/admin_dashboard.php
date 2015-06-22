@@ -37,36 +37,8 @@
 
 <script src="http://<?php echo base_url();?>assets/js/socketio.js"></script>
 <script>
-	var socket = io.connect('http://192.168.1.25:8282', {'sync disconnect on unload': true });
-	var questionSequence = 0;
-	var curRoundId = 0;
-	var jsonQqArray = '<?php echo json_encode($qq); ?>';
-	var fullQuestionSequence = JSON.parse(jsonQqArray);
-
-	function forward(){
-		$('.sortable').sortable('disable');
-		if (fullQuestionSequence[questionSequence]['roundId'] == curRoundId){
-			requestQuestion(curRoundId, fullQuestionSequence[questionSequence]['questionId'])
-			questionSequence++;
-		}
-		else{
-			requestEndRound(curRoundId);
-			curRoundId = fullQuestionSequence[questionSequence]['roundId'];
-		}
-		
-	}
-
-
-
+	var socket = io.connect('http://10.0.0.50:8282', {'sync disconnect on unload': true });
 	
-	function requestQuestion(rId,qId) {
-		socket.emit('requestQuestion', rId,qId);
-		console.log("requestQuestion: " + qId);
-	}
-	function requestEndRound(rId,qId) {
-		socket.emit('requestEndRound', rId);
-		console.log("requestEndRound: " + rId);
-	}
 	$(window).on('beforeunload', function(){
     	socket.close();
 	});
