@@ -343,7 +343,7 @@ public function login(){
     $this->load->model('TeamModel');
     $this->load->model('RoundModel');
     $data['roundsnav'] = $this->RoundModel->getRounds();
-    $data['teamsnav'] = $this->TeamModel->getTeamData('teams');
+    $data['teamsnav'] = $this->TeamModel->getTeamData();
     $data['questions'] = $this->QuestionModel->getQuestions();
 
     $this->load->view('admin_nav', $data);
