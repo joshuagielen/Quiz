@@ -489,8 +489,18 @@ public function addNewTeam(){
   public function dashboard(){
 
     $this->load->helper('url');
+    $this->load->model('QuestionQueueModel');
     $this->load->model('StatusModel');
     $data = $this->loadNavData();
+
+    $currRound = $this->StatusModel->getStatus($currentRoundStatusId);
+    $currQuestion = $this->StatusModel->getStatus($currentQuestionStatusId);
+
+    $questionsForThisRound = $this->QuestionQueueModel->getQuestionsForRound($currRound);
+
+
+
+
 
 
     $this->load->view('admin_nav', $data);

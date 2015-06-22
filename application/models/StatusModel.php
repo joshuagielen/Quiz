@@ -49,6 +49,10 @@ class StatusModel extends CI_Model{
 		$this->db->where('statusId', $statusId);
 		$this->db->update('status', $data);
 	}
+
+	function getStatus($statusId){
+		return $this->db->get_where('status',array('statusId' => $statusId))->Row()->statusValue;
+	}
 }
 
 ?>
