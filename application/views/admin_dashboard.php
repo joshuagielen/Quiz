@@ -7,24 +7,26 @@
 <script src="<?php echo base_url();?>assets/js/socketio.js"></script>
 <script>
 	var socket = io.connect('<?php echo node_url?>', {'sync disconnect on unload': true });
-	var questionSequence = 0;
-	var curRoundId = 0;
-	var jsonQqArray = '<?php echo json_encode($qq); ?>';
-	var fullQuestionSequence = JSON.parse(jsonQqArray);
+	this.socket.on('Question', reloadPage());
+  	this.socket.on('EndRound', reloadPage());
+
+  	function reloadPage(){  		
+  		location.reload();
+  	}
+
+
+	var curRoundId = <?php echo $currRoundId; ?>;
+	var curQuestionId = <?php echo $currQuestionId; ?>;
 
 	function forward(){
-		$('.sortable').sortable('disable');
-		if (fullQuestionSequence[questionSequence]['roundId'] == curRoundId){
-			requestQuestion(curRoundId, fullQuestionSequence[questionSequence]['questionId'])
-			questionSequence++;
+		if (curQuestionId == -1){
+			socket.emit('requestEndRound', curRoundId);			
 		}
-		else{
-			requestEndRound(curRoundId);
-			curRoundId = fullQuestionSequence[questionSequence]['roundId'];
-		}
-		
+		else{			
+			socket.emit('requestQuestion', curRoundId,curQuestionId);
+		}		
 	}
-
+	
 
 
 

@@ -36,7 +36,7 @@
 
 
   this.socket.on('Question', askQuestion);
-  this.socket.on('EndRound', endRound); 
+  this.socket.on('EndRound', endRound);
 </script>
 
 
