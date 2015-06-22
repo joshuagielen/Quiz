@@ -31,7 +31,7 @@
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="navbar-header">
             	<a class="navbar-brand" href="<?php echo base_url();?>Admin">Quiz Admin</a>
-                <?php echo "<a class='navbar-brand' href='http://" . base_url() . "Admin/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?>
+                <?php echo "<a class='navbar-brand' href='" . base_url() . "Admin/logOut/'" . "class='btn btn-lg' role='button'><span class='glyphicon glyphicon-log-out'></span></a>"; ?>
 
 
             </div>

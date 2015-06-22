@@ -22,7 +22,11 @@
         
         
         for ($i=0;$i<count($seqRounds);$i++){
-            echo "<li class='list-group-item' id='" . $seqRounds[$i]->roundId . "'>" . $seqRounds[$i]->roundName  . "</li>";
+            echo "<li class='list-group-item' id='" . $seqRounds[$i]->roundId . "'>" . $seqRounds[$i]->roundName  . "
+                  <a href='" . base_url() . "admin/deleteRound/" .  $seqRounds[$i]->roundId . " ' class='btn' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a>
+
+
+            </li>";
         }
         for ($i=0;$i<count($noSeqRounds);$i++){
             echo "<li class='list-group-item' id='" . $noSeqRounds[$i]->roundId . "'>" . $noSeqRounds[$i]->roundName  . "</li>";
@@ -36,10 +40,33 @@
     </div>
 </div>
 <script src="<?php echo base_url();?>assets/js/html.sortable.src.js"></script>
+<script>
+  function confirmation()
+  {    
+
+    var r=confirm("are you sure to delete?")
+    if (r==true)
+    {
+      return true;
+    }
+    else
+    {
+       return false;
+    }
+  }
+
+</script>
       <script>
         $(".sortable").sortable({
           connectWith: '.js-connected'
         }).bind('sortupdate', function(e, ui) {
+          updateRoundSequence();
+        });
+
+        $( window ).unload(updateRoundSequence());
+
+
+        function updateRoundSequence(){
           var quizRoundAmount = document.getElementById("roundList").getElementsByTagName("li").length;
           var data = new Array();
           for (i = 0; i < quizRoundAmount; i++) {
@@ -62,7 +89,7 @@
               alert(a + ' ' + b + ' ' + c);
             }
         });
-        });
+        }
       </script>
 
 

@@ -379,6 +379,38 @@ public function addNewTeam(){
             }
     
   }
+  public function deleteRound($roundId){
+  $this->load->helper('url');
+
+  $this->load->model('RoundModel');
+
+
+    if ($this->RoundModel->deleteRound($roundId))
+    {
+      redirect(base_url('admin/newRound'));
+
+    }
+  }
+  public function updateRound(){
+      $this->load->helper('url');
+
+    $this->load->model('RoundModel');
+            $roundId = $this->input->post("questionId");
+            $roundName = $this->input->post("questionValue");
+
+
+            $roundData = array(
+               'roundName' => $roundName
+            );
+
+            if ($this->RoundModel->updateRound($roundId, $roundData))
+            {
+               redirect(base_url('admin/newRound'));
+
+            }
+    
+  }
+
 
   public function round($roundId){
 
@@ -433,18 +465,24 @@ public function addNewTeam(){
                         
               if ($this->RoundModel->insertRound($roundData) )
               {    
-                                          
+                  //getroundbyName
 
-              // team and players added
-                $this->session->set_flashdata('roundMsg','<div class="alert alert-success text-center">Round is succesfully added!</div>');
+                  $roundId = $this->RoundModel->getRoundIdByName($roundName);     
+
+
+
+              // roundAdded
+                $this->session->set_flashdata('roundMsg',"<div class='alert alert-success text-center'>Round is succesfully added!
+                  <a href='" . base_url('/Admin/Round') . "/" . $roundId . "'>Go to this round</a></div>");
+                 redirect(base_url('/Admin/newRound'));
+                
+              }
+              else
+              {
+                //error
+                $this->session->set_flashdata('roundMsg','<div class="alert alert-danger text-center">Something went wrong!</div>');
                 redirect(base_url('/Admin/newRound'));
-            }
-            else
-            {
-              //error
-              $this->session->set_flashdata('roundMsg','<div class="alert alert-danger text-center">Something went wrong!</div>');
-              redirect(base_url('/Admin/newRound'));
-            }
+              }
           }
   }
 

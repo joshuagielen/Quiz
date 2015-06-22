@@ -28,6 +28,14 @@ class RoundModel extends CI_Model{
 		$query = $this->db->get_where('rounds', array('roundId' => $rId))->row();
 		return $query;
 	}
+	function getRoundIdByName($roundName){
+		$roundId = $this->db->select('roundId')
+                  ->get_where('rounds', array('roundName' => $roundName))
+                  ->row()
+                  ->roundId;
+		return $roundId;
+	}
+
 	
 
 

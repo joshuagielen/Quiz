@@ -141,12 +141,12 @@ function validate()
   <input type='text' class='form-control' id='questionValue' placeholder='Enter question' name='questionValue' value='". $question->questionValue ." '>
   </div>";
   echo "<div class='form-group' >
-  <label for='questionType'>Type</label>
-  <input type='text' class='form-control' id='questionType' placeholder='Enter type of question' name='questionType' value='". $question->questionType ." '>
-  </div>";
-  echo "<div class='form-group' >
   <label for='questionGenre'>Genre</label>
   <input type='text' class='form-control' id='questionGenre' placeholder='Enter genre of question' name='questionGenre' value='". $question->questionGenre ." '>
+  </div>";
+  echo "<div class='form-group' >
+  <label for='questionType'>Type</label>
+  <input type='text' class='form-control' id='questionType' placeholder='Enter type of question' name='questionType' value='". $question->questionType ." '>
   </div>";
   echo "<input type='submit' value='change question' name='change' />";
   echo "</form>";
