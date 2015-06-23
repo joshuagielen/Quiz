@@ -75,6 +75,51 @@ function validate()
    return true;
 }
 </script>
+<script>
+        var answer = 1;
+        function add_fields() {
+            answer++;
+            var objTo = document.getElementById('answers')
+            var divtest = document.createElement("div");
+            divtest.innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer ' + answer + ' </label><input class="form-control" id="answer" name="answer[,]" type="text" placeholder="Enter answer value" required autofocus><label for="answer1">Score of answer </label><input class="form-control" id="answer" type="text" name="answer[,]" placeholder="Enter score of answer" required><label for="answer">This question is correct?</label><input type="checkbox" name="answer[,]"></div></div>';
+            
+            objTo.appendChild(divtest)
+        }
+
+
+        function findmyvalue()
+        {
+            var selectIndex = document.getElementById("questionType").value;
+
+            
+            replaceContentInContainer(selectIndex);
+        }
+
+
+        function replaceContentInContainer(selectIndex) {
+
+          if(selectIndex <=1){
+              document.getElementById("answerType").innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer</label>' + 
+                    '<input class="form-control" id="answer" name="answer[][value]" type="text" placeholder="Enter answer value" required autofocus>' +
+                    '<label for="answer1">Score of answer </label><input class="form-control" id="answer" type="text" name="answer[][score]" placeholder="Enter score of answer" required>' +
+                    '<input type="checkbox" name="answer[][correct]" checked hidden></div></div>';
+
+          }else{
+            document.getElementById("answerType").innerHTML = '<div id="answers"><div class="form-group"><div class="form-inline ">' +
+                            '<label for="answer">Answer 1</label><input class="form-control" id="answer" name="answer[][value]" type="text" placeholder="Enter answer value" required autofocus>' +
+                            '<label for="answer1">Score of answer</label><input class="form-control" id="answer" type="text" name="answer[][score]" placeholder="Enter score of answer" required>' +
+                            '<label for="answer">This question is correct?</label><input type="checkbox" name="answer[][correct]"checked>' +
+                            '</div></div></div><a href="#"  onclick="add_fields();"  class="btn btn-lg" role="button"><span class="glyphicon glyphicon-plus-sign"></span></a></br>';
+
+          
+          }
+
+          
+            
+            
+
+        }
+</script>
 
 
 
@@ -100,18 +145,7 @@ function validate()
       }
 
       ?>
-      <tr><td></td>
-        <form method='post' action='<?php echo base_url()?>admin/addQuestion' name="addQuestion">
-         
-         <td><input type='text' class="form-control" id="questionValue"  name='questionValue' placeholder="Enter question" value='' onKeyPress="return submitenter(this,event)"/></td>
-         <td><input type="text" class="form-control" id="questionGenre" placeholder="Enter genre of question" name="questionGenre" onKeyPress="return submitenter(this,event)"></td>
-         <td><input type='text' class="form-control" id="questionType"  name='questionType' placeholder="Enter question type" value='' onKeyPress="return submitenter(this,event)"/></td>
-       </form>
-
-
-
-
-     </tr>
+    
 
 
 
@@ -129,7 +163,7 @@ function validate()
  foreach ($questions as $question) {
 
   echo "<div id='question". $question->questionId ."'><div id='myModal' class='reveal-modal'>";
-  echo "<form method='post' action='http://" . base_url() . "admin/updateQuestion'>";
+  echo "<form method='post' action='" . base_url() . "admin/updateQuestion'>";
 
   echo "<input type='hidden' name='questionId' value='" . $question->questionId . "' />";
   echo "<div class='form-group' >
@@ -153,25 +187,61 @@ function validate()
 
 ?>
 
+<h2 class="text-left">Add question</h2>
+  <form method='post' action='<?php echo base_url() ?>admin/addQuestion'>
+    <div class="col-lg-8">
+              <div class="form-group">
+                    <label for="questionValue">Question</label>
+                    <input class="form-control" id="questionValue" name="questionValue" type="text" placeholder="Enter name of question" required autofocus>
+              </div>
+              <div class="form-group">
+                  <label for="questionGenre">Genre</label>
+                  <select class="form-control" name="questionGenre">
+                      <?php
+                        foreach($genres as $genre){
+                            echo "<option value='" . $genre->genreId . "'>" . $genre->genreName . "</option>";
+                          }
+                      ?>
+                  </select>
+              </div>
+               <div class="form-group">
+                  <label for="questionType">Type</label>
+                  <select class="form-control" onchange="findmyvalue()"  id="types" name="questionType">
+                      <?php
+                        foreach($types as $type){
+                            echo "<option value='" . $type->typeId . "'>" . $type->typeName . "</option>";
+                          }
+                      ?>
+                  </select>
+              </div>
+
+              <div id="answerType">
+
+              <div class="form-group">
+                    <div class="form-inline "><label for="answer">Answer</label>
+                        <input class="form-control" id="answers" name="answers[][value]" type="text" placeholder="Enter answer value" required >
+                        <label for="answer1">Score of answer </label><input class="form-control" id="answers" type="text" name="answers[][score]" placeholder="Enter score of answer" required>
+                        <input id="answers" type="checkbox" name="answers[][correct]" checked hidden>
+                    </div>
+              </div>
+
+
+              
+               </div>
+              <input class="btn btn-lg" type="submit" value="Add Question" name="addQuestion">
+   
+    
+             
+    </div>
+  </form>
+
+
+
+ 
+
+
+
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
