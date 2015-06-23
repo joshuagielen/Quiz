@@ -315,6 +315,8 @@ public function addNewTeam(){
     $data['types'] = $this->TypeModel->getTypes();
 
 
+    $this->load->model('AnswerModel');
+    $data['answers']= $this->AnswerModel->getAllAnswers();
     $this->load->view('admin_nav', $data);
     $this->load->view('admin_questions');
 
@@ -326,23 +328,30 @@ public function addNewTeam(){
       $this->load->helper('url');
 
     $this->load->model('QuestionModel');
+    $this->load->model('AnswerModel');
+
+    
      
+    if($this->AnswerModel->deleteAnswerByQuestionId($questionId)){
+         if ($this->QuestionModel->deleteQuestion($questionId))
+          {
+            redirect(base_url('admin/questions'));
+          }
+    }
 
-    if ($this->QuestionModel->deleteQuestion($questionId))
-            {
-               redirect(base_url('admin/questions'));
-
-            }
+   
 
   }
   public function updateQuestion(){
       $this->load->helper('url');
 
     $this->load->model('QuestionModel');
+    $this->load->model('AnswerModel');
             $questionId = $this->input->post("questionId");
             $questionValue = $this->input->post("questionValue");
             $questionType = $this->input->post("questionType");
             $questionGenre = $this->input->post("questionGenre");
+
 
 
 
@@ -355,7 +364,24 @@ public function addNewTeam(){
 
             if ($this->QuestionModel->updateQuestion($questionId, $questionData))
             {
-               redirect(base_url('admin/questions'));
+
+              $questionId = $this->QuestionModel->getQuestionIdByName($questionValue);
+              $answers =  $this->input->post("answersUpdate");
+              
+              foreach($answers as $answer){
+                 $answerId = $answer['answerId'];
+                
+                $answerData = array(
+                                  "answerValue" => $answer['value'],
+                                  "answerScoreValue" => $answer['score']
+                                  );
+
+                $this->AnswerModel->updateAnswer($questionId, $answerId, $answerData);
+              }
+
+
+
+               /*redirect(base_url('admin/questions'));*/
 
             }
     
@@ -368,45 +394,49 @@ public function addNewTeam(){
     $this->load->model('GenreModel');
     $this->load->model('AnswerModel');
     $questionValue = $this->input->post("questionValue");
-    $questionType = $this->input->post("questionType");
-    $questionGenre = $this->input->post("questionGenre");
+   
+    $this->form_validation->set_rules('questionValue', 'QuestionValue', 'is_unique[questions.questionValue]');
 
-    //get genreName & typeName
-     $questionGenre = $this->input->post("questionGenre");
-    $questionGenre = $this->GenreModel->getGenreNameById($questionGenre);
-    $questionType = $this->TypeModel->getTypeNameById($questionType);
-
-
-    $questionData = array(
-       'questionValue' => $questionValue,
-      'questionType' => $questionType,
-      'questionGenre' => $questionGenre,
-    );
-
-    if ($this->QuestionModel->insertQuestion($questionData))
+    if ($this->form_validation->run() == FALSE || empty($_POST['questionValue']) )
     {
-      $questionId = $this->QuestionModel->getQuestionIdByName($questionValue);
-      $answers =  $this->input->post("answers");
-      
+  //validation fails
+        $this->questions();
+    }
+    else
+    {
 
-        foreach($answers as $answer){
-          
-          $answerData = array(
-                            "questionId" => $questionId,
-                            "answerValue" => $answer['value'],
-                            "answerScoreValue" => $answer['score']
-                            );
+        $questionType = $this->input->post("questionType");
+        $questionGenre = $this->input->post("questionGenre");
+        
+        $questionGenre = $this->GenreModel->getGenreNameById($questionGenre);
+        $questionType = $this->TypeModel->getTypeNameById($questionType);
 
-          $this->AnswerModel->insertAnswer($answerData);
+        $questionData = array(
+                            'questionValue' => $questionValue,
+                            'questionType' => $questionType,
+                            'questionGenre' => $questionGenre
+                        );
+
+        if ($this->QuestionModel->insertQuestion($questionData))
+        {
+          $questionId = $this->QuestionModel->getQuestionIdByName($questionValue);
+          $answers =  $this->input->post("answers");
+              foreach($answers as $answer){
+              
+              $answerData = array(
+                                "questionId" => $questionId,
+                                "answerValue" => $answer['value'],
+                                "answerScoreValue" => $answer['score']
+                                );
+
+              $this->AnswerModel->insertAnswer($answerData);
+              }
+
+              $this->session->set_flashdata('questionMsg','<div class="alert alert-success text-center">"Question and answers added!</div>');
+              redirect(base_url('admin/questions'));
         }
 
-
-      
-       
-
-    }
-
-    redirect(base_url('admin/questions'));
+    }    
     
   }
   public function deleteRound($roundId){

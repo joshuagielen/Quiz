@@ -84,7 +84,7 @@ function validate()
             count++;
             var objTo = document.getElementById('answers')
             var divtest = document.createElement("div");
-            divtest.innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer ' + answer + ' </label><input class="form-control" id="answer" name="answers[' + count + '][value]" type="text" placeholder="Enter answer value" required autofocus><label for="answer1">Score of answer </label><input class="form-control" id="answers" type="text" name="answers[' + count + '][score]" placeholder="Enter score of answer" required></div></div>';
+            divtest.innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer ' + answer + ' </label><input class="form-control" id="answer" name="answers[' + count + '][value]" type="text" placeholder="Enter answer value" required autofocus><label for="answer1">Score of answer </label><input class="form-control" id="answers" type="number" name="answers[' + count + '][score]" placeholder="Enter score of answer" required></div></div>';
             
             objTo.appendChild(divtest)
             window.scrollTo(0,document.body.scrollHeight);
@@ -94,8 +94,10 @@ function validate()
         function findmyvalue()
         {
             var selectIndex = document.getElementById("types").selectedIndex;
-            alert(selectIndex);
-
+            
+            var s = document.getElementsByName('types')[selectIndex];
+            var txt=s.options[s.selectedIndex].firstChild.nodeValue;
+            alert(txt);
             
             replaceContentInContainer(selectIndex);
         }
@@ -107,12 +109,12 @@ function validate()
             answer = 0;
               document.getElementById("answerType").innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer</label>' + 
                     '<input class="form-control" id="answer" name="answers[0][value]" type="text" placeholder="Enter answer value" required autofocus>' +
-                    '<label for="answer1">Score of answer </label><input class="form-control" id="answer" type="text" name="answers[0][score]" placeholder="Enter score of answer" required></div></div>';
+                    '<label for="answer1">Score of answer </label><input class="form-control" id="answer" type="number" name="answers[0][score]" placeholder="Enter score of answer" required></div></div>';
 
           }else{
             document.getElementById("answerType").innerHTML = '<div id="answers"><div class="form-group"><div class="form-inline ">' +
                             '<label for="answer">Answer 1</label><input class="form-control" id="answer" name="answers[0][value]" type="text" placeholder="Enter answer value" required autofocus>' +
-                            '<label for="answer1">Score of answer</label><input class="form-control" id="answer" type="text" name="answers[0][score]" placeholder="Enter score of answer" required>' +
+                            '<label for="answer1">Score of answer</label><input class="form-control" id="answer" type="number" name="answers[0][score]" placeholder="Enter score of answer" required>' +
                             '</div></div></div><a href="#"  onclick="add_fields();"  class="btn btn-lg" role="button"><span class="glyphicon glyphicon-plus-sign"></span></a></br>';
 
           
@@ -165,6 +167,8 @@ function validate()
  <?php
 
  foreach ($questions as $question) {
+  $answerCount = 1;
+  $arrayCount = 0;
 
   echo "<div id='question". $question->questionId ."'><div id='myModal' class='reveal-modal'>";
   echo "<form method='post' action='" . base_url() . "admin/updateQuestion'>";
@@ -176,13 +180,35 @@ function validate()
   </div>";
   echo "<div class='form-group' >
   <label for='questionGenre'>Genre</label>
-  <input type='text' class='form-control' id='questionGenre' placeholder='Enter genre of question' name='questionGenre' value='". $question->questionGenre ." '>
+  <input type='text' class='form-control' id='questionGenre' placeholder='Enter genre of question' name='questionGenre' value='". $question->questionGenre ." ' disabled>
   </div>";
   echo "<div class='form-group' >
   <label for='questionType'>Type</label>
-  <input type='text' class='form-control' id='questionType' placeholder='Enter type of question' name='questionType' value='". $question->questionType ." '>
+  <input type='text' class='form-control' id='questionType' placeholder='Enter type of question' name='questionType' value='". $question->questionType ." ' disabled>
   </div>";
-  echo "<input type='submit' value='change question' name='change' />";
+
+  foreach($answers as $answer){
+    echo "<div class='row'>";
+    if ($answer->questionId == $question->questionId){
+
+      echo "<input type='hidden' name='answersUpdate[" . $arrayCount . "][answerId]' value='" . $answer->answerId ."'>";
+
+      echo "<div class='col-md-9'>
+            <label for='answer'>Answer " . $answerCount . "</label>
+            <input class='form-control' id='answersUpdate' name='answersUpdate[" . $arrayCount . "][value]' type='text' placeholder='Enter answer value' value='". $answer->answerValue . "' required >
+            </div>";
+      echo "<div class='col-md-3'>
+            <label for='answer1'>Score " . $answerCount . " </label>
+            <input class='form-control' id='answersUpdate' type='number' name='answersUpdate[" . $arrayCount . "][score]' placeholder='Enter score of answer " . $answerCount . "' value='". $answer->answerScoreValue . "' required>
+            </div>";
+
+      $answerCount++;
+      }
+
+      echo "</div>";
+      $arrayCount++;
+  }
+  echo "<input class='btn btn-lg' type='submit' value='Update Question' name='updateQuestion'>";
   echo "</form>";
   echo "<a class='close-reveal-modal'>&#215;</a></div></div>";  
 }
@@ -197,6 +223,7 @@ function validate()
               <div class="form-group">
                     <label for="questionValue">Question</label>
                     <input class="form-control" id="questionValue" name="questionValue" type="text" placeholder="Enter name of question" required autofocus>
+                    <span class="text-danger"><?php echo form_error('questionValue'); ?></span>
               </div>
               <div class="form-group">
                   <label for="questionGenre">Genre</label>
@@ -210,7 +237,7 @@ function validate()
               </div>
                <div class="form-group">
                   <label for="questionType">Type</label>
-                  <select class="form-control" onchange="findmyvalue()"  id="types" name="questionType">
+                  <select class="form-control" onclick="findmyvalue()"  id="types" name="types">
                       <?php
                         foreach($types as $type){
                             echo "<option value='" . $type->typeId . "'>" . $type->typeName . "</option>";
@@ -224,7 +251,7 @@ function validate()
               <div class="form-group">
                     <div class="form-inline "><label for="answer">Answer</label>
                         <input class="form-control" id="answers" name="answers[0][value]" type="text" placeholder="Enter answer value" required >
-                        <label for="answer1">Score of answer </label><input class="form-control" id="answers" type="text" name="answers[0][score]" placeholder="Enter score of answer" required>
+                        <label for="answer1">Score of answer </label><input class="form-control" id="answers" type="number" name="answers[0][score]" placeholder="Enter score of answer" required>
                     </div>
               </div>
 
@@ -238,7 +265,7 @@ function validate()
     </div>
   </form>
 
-
+  <?php echo $this->session->flashdata('questionMsg'); ?>
 
  
 
