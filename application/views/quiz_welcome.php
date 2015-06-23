@@ -1,9 +1,4 @@
-	<style>
-	#teamColor{
-		background-color: <?php echo $teamInfo['teamColor']?>;
-	}
-
-	</style>
+	
 	
 	<div class="container text-center">
 		<div class="row">

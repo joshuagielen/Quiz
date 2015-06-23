@@ -353,8 +353,6 @@ public function addNewTeam(){
             $questionGenre = $this->input->post("questionGenre");
 
 
-            
-           
 
 
 
@@ -383,7 +381,7 @@ public function addNewTeam(){
 
 
 
-               redirect(base_url('admin/questions'));
+               /*redirect(base_url('admin/questions'));*/
 
             }
     
@@ -436,6 +434,7 @@ public function addNewTeam(){
               $this->AnswerModel->insertAnswer($answerData);
               }
 
+              $this->session->set_flashdata('questionMsg','<div class="alert alert-success text-center">"Question and answers added!</div>');
               redirect(base_url('admin/questions'));
         }
 
@@ -572,7 +571,6 @@ public function addNewTeam(){
     if ($currRoundId == null){      
       $this->StatusModel->initQuiz();
     }
-    $this->StatusModel->initQuiz();
 
     
     if ($currRoundId == -1 && $currQuestionId == -1){
@@ -670,7 +668,11 @@ public function addNewTeam(){
     $this->load->model('StatusModel');
     $this->StatusModel->initQuiz();
     $this->dashboard();
+  }
+  public function resetCounting(){
 
+    $this->load->model('StatusModel');
+    $this->StatusModel->initQuiz();
   }
 
   private function loadNavData(){

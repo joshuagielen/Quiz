@@ -47,8 +47,20 @@
               alert(a + ' ' + b + ' ' + c);
             }
         });
-
 		
+
+	}
+	function resetCounting(){
+
+		$.ajax({url:'<?php echo base_url() ?>admin/resetCounting',
+            success:function(data){
+            	alert("counting reset!");
+            },
+            error: function(a, b, c) {
+            	alert(a + ' ' + b + ' ' + c);
+            }
+        });
+		return "ok";
 
 	}
 
