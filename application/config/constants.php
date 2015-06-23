@@ -92,3 +92,4 @@ define('node_url','http://192.168.0.136:8282');
 define('currentQuestionStatusId', 4);
 define('currentRoundStatusId', 5);
 define('inRoundEndStatusId', 6);
+define('inQuizEndStatusId', 7);

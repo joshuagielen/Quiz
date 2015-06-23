@@ -524,19 +524,68 @@ public function addNewTeam(){
   public function dashboard(){
 
 
+
     $this->load->helper('url');
     $this->load->model('QuestionQueueModel');
     $this->load->model('StatusModel');
     $data = $this->loadNavData();
+
     $currRoundId = $this->StatusModel->getStatus(currentRoundStatusId);
     $currQuestionId = $this->StatusModel->getStatus(currentQuestionStatusId);
     $inRoundEnd = $this->StatusModel->getStatus(inRoundEndStatusId);
+    $inQuizEnd = $this->StatusModel->getStatus(inQuizEndStatusId);
+    $data['inQuizEnd'] = $inQuizEnd;
 
     
     if ($currRoundId == -1 && $currQuestionId == -1){
       $q = $this->QuestionQueueModel->QuestionZero();
-      $data['qId'] = $q->questionId;
-      $data['rId'] = $q->roundId;
+      if (is_int($q)){
+        $data['qzero'] == "none";
+      }
+      else{
+        $data['qId'] = $q->questionId;
+        $data['rId'] = $q->roundId;
+        $this->StatusModel->updateStatus(currentRoundStatusId,$q->roundId);
+        $this->StatusModel->updateStatus(currentQuestionStatusId,$q->questionId);
+      }
+    }
+    else{
+      if($inQuizEnd){
+        $data['qId'] = -1;
+        $data['rId'] = -1;
+      }
+      else{
+        if($inRoundEnd){
+          $data['qId'] = -1;
+          $data['rId'] = $currRoundId;          
+        }
+        else{
+          $data['qId'] = $currQuestionId;
+          $data['rId'] = $currRoundId;
+        }
+      }
+    }
+    
+
+    $this->load->view('admin_nav', $data);
+    $this->load->view('admin_dashboard', $data);
+    $this->load->view('admin_footer');
+  }
+
+  function updateQuizStatus(){
+    $this->load->model('QuestionQueueModel');
+    $this->load->model('StatusModel');
+    $currRoundId = $this->StatusModel->getStatus(currentRoundStatusId);
+    $currQuestionId = $this->StatusModel->getStatus(currentQuestionStatusId);
+    $inRoundEnd = $this->StatusModel->getStatus(inRoundEndStatusId);
+    $inQuizEnd = $this->StatusModel->getStatus(inQuizEndStatusId);
+    if($inQuizEnd){
+      $currRoundId = -1;
+      $currQuestionId = -1;
+      $this->StatusModel->updateStatus(inQuizEndStatusId,0);
+    }
+    if ($currRoundId == -1 && $currQuestionId == -1){// should never happen unles quiz restart
+      $q = $this->QuestionQueueModel->QuestionZero();
       $this->StatusModel->updateStatus(currentRoundStatusId,$q->roundId);
       $this->StatusModel->updateStatus(currentQuestionStatusId,$q->questionId);
     }
@@ -551,29 +600,28 @@ public function addNewTeam(){
       $index = array_search($question, $allQuizQuestions);
       $ammountOfQuestions = count($allQuizQuestions);
       if ($ammountOfQuestions == $index + 1){
-        $data['qId'] = -1;
-        $data['rId'] = -1;
+        if ($inRoundEnd){
+          $this->StatusModel->updateStatus(inQuizEndStatusId,1);
+        }
+        $this->StatusModel->updateStatus(inRoundEndStatusId,1);
       }
       else{
         $q = $allQuizQuestions[$index + 1];
         if ($question->roundId == $q->roundId || $inRoundEnd){
-          $data['qId'] = $q->questionId;
-          $data['rId'] = $q->roundId;        
           $this->StatusModel->updateStatus(currentRoundStatusId,$q->roundId);
-          $this->StatusModel->updateStatus(currentQuestionStatusId,$q->questionId);        
+          $this->StatusModel->updateStatus(currentQuestionStatusId,$q->questionId);
           $this->StatusModel->updateStatus(inRoundEndStatusId,0);
         }
         else{
-          $data['qId'] = -1;
-          $data['rId'] = $question->roundId;
           $this->StatusModel->updateStatus(inRoundEndStatusId,1);
         }
       }    
     }
+    echo $this->StatusModel->getStatus(currentRoundStatusId);
+    echo $this->StatusModel->getStatus(currentQuestionStatusId);
+    echo $this->StatusModel->getStatus(inRoundEndStatusId);
+    echo $this->StatusModel->getStatus(inQuizEndStatusId);
 
-    $this->load->view('admin_nav', $data);
-    $this->load->view('admin_dashboard', $data);
-    $this->load->view('admin_footer');
   }
   public function restartQuiz(){
 

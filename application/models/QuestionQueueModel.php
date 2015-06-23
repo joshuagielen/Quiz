@@ -60,7 +60,21 @@ class QuestionQueueModel extends CI_Model{
 	    $this->db->join('rounds AS r', 'r.roundId=q.roundId');
 		$this->db->where('q.sequenceNumber', 0);
 		$this->db->where('r.roundSequenceNumber', 0);
-		return $this->db->get()->row();
+		$query = $this->db->get();
+
+		$rowCount = $query->num_rows();
+
+		if ($rowCount == 1){
+			return $query->Row();
+		}
+		else if ($rowCount > 1){
+			show_error('multiple questionZero\'s');
+			//$this->fixSequenceError();
+			return -2;
+		}
+		else /*if ($rowCound < 1)*/{
+			return -1;
+		}
 	}
 
 	
