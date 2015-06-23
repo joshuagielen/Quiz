@@ -19,6 +19,13 @@ class QuestionModel extends CI_Model{
 		$query = $this->db->get('questions');
 		return $query->result();
 	}
+	function getQuestionsNotInRound(){
+		$this->db->query('	SELECT q.questionValue, q.questionId
+							FROM questions q
+							where q.questionId NOT IN(	SELECT qq.questionId
+														FROM questionQueue qq)'
+						);
+	}
 	function getQuestionById($qId) {
 		$query = $this->db->get_where('questions', array('questionId' => $qId))->row();
 		return $query;
