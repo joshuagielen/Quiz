@@ -307,8 +307,13 @@ public function addNewTeam(){
 
     $this->load->helper('url');
     $this->load->model('QuestionModel');
+    $this->load->model('GenreModel');
+    $this->load->model('TypeModel');
     $data = $this->loadNavData();
     $data['questions'] = $this->QuestionModel->getQuestions();
+    $data['genres'] = $this->GenreModel->getGenres();
+    $data['types'] = $this->TypeModel->getTypes();
+
 
     $this->load->view('admin_nav', $data);
     $this->load->view('admin_questions');
@@ -359,24 +364,49 @@ public function addNewTeam(){
     $this->load->helper('url');
 
     $this->load->model('QuestionModel');
-            $questionId = $this->input->post("questionId");
-            $questionValue = $this->input->post("questionValue");
-            $questionType = $this->input->post("questionType");
-            $questionGenre = $this->input->post("questionGenre");
+    $this->load->model('TypeModel');
+    $this->load->model('GenreModel');
+    $this->load->model('AnswerModel');
+    $questionValue = $this->input->post("questionValue");
+    $questionType = $this->input->post("questionType");
+    $questionGenre = $this->input->post("questionGenre");
+
+    //get genreName & typeName
+     $questionGenre = $this->input->post("questionGenre");
+    $questionGenre = $this->GenreModel->getGenreNameById($questionGenre);
+    $questionType = $this->TypeModel->getTypeNameById($questionType);
 
 
+    $questionData = array(
+       'questionValue' => $questionValue,
+      'questionType' => $questionType,
+      'questionGenre' => $questionGenre,
+    );
 
-            $questionData = array(
-               'questionValue' => $questionValue,
-              'questionType' => $questionType,
-              'questionGenre' => $questionGenre,
-            );
+    if ($this->QuestionModel->insertQuestion($questionData))
+    {
+      $questionId = $this->QuestionModel->getQuestionIdByName($questionValue);
+      $answers =  $this->input->post("answers");
+      print_r($answers);
 
-            if ($this->QuestionModel->insertQuestion($questionData))
-            {
-               redirect(base_url('admin/questions'));
+        foreach($answers as $answer){
+          $answerData = array(
+                            "questionId" => $questionId,
+                            "answerValue" => $answer->value,
+                            "answerScoreValue" => $answer->score,
+                            "answerCorrectness" => $answer->correct
+                            );
 
-            }
+          $this->AnswerModel->insertAnswer($answerData);
+        }
+
+
+      
+       
+
+    }
+
+    /*redirect(base_url('admin/questions'));*/
     
   }
   public function deleteRound($roundId){
@@ -479,7 +509,7 @@ public function addNewTeam(){
               // roundAdded
                 $this->session->set_flashdata('roundMsg',"<div class='alert alert-success text-center'>Round is succesfully added!
                   <a href='" . base_url('/Admin/Round') . "/" . $roundId . "'>Go to this round</a></div>");
-                 redirect(base_url('/Admin/newRound'));
+                  redirect(base_url('/Admin/newRound'));
                 
               }
               else

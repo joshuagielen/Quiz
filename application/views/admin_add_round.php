@@ -28,15 +28,38 @@
         
         
         for ($i=0;$i<count($seqRounds);$i++){
-            echo "<li class='list-group-item' id='" . $seqRounds[$i]->roundId . "'>" . $seqRounds[$i]->roundName  . "<a class='pull-right'  href='" . base_url() . "admin/Round/" .  $seqRounds[$i]->roundId . " ' class='btn btn-lg' role='button' ><span class=' pull-right glyphicon glyphicon-arrow-right'></span></a>  <a class='pull-right'  href='" . base_url() . "admin/deleteRound/" .  $seqRounds[$i]->roundId . " ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class=' pull-right glyphicon glyphicon-remove'></span></a>
-                      <a class='pull-right' href='#round" . $seqRounds[$i]->roundId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'><span class='glyphicon glyphicon-edit'></span></a> 
-                  
-
-
-            </li>";
+            echo "<li class='list-group-item' id='" . $seqRounds[$i]->roundId . "'>
+                    " . $seqRounds[$i]->roundName  . "
+                    <a class='pull-right'  href='" . base_url() . "admin/Round/" .  $seqRounds[$i]->roundId . " ' class='btn btn-lg' role='button' >
+                      <span class=' pull-right glyphicon glyphicon-arrow-right'>
+                      </span>
+                    </a>
+                    <a class='pull-right'  href='" . base_url() . "admin/deleteRound/" .  $seqRounds[$i]->roundId . " ' class='btn btn-lg' role='button' onclick='return confirmation()'>
+                      <span class=' pull-right glyphicon glyphicon-remove'>
+                      </span>
+                    </a>
+                    <a class='pull-right' href='#round" . $seqRounds[$i]->roundId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'>
+                      <span class='glyphicon glyphicon-edit'>
+                      </span>
+                    </a>
+                  </li>";
         }
         for ($i=0;$i<count($noSeqRounds);$i++){
-            echo "<li class='list-group-item' id='" . $noSeqRounds[$i]->roundId . "'>" . $noSeqRounds[$i]->roundName  . "</li>";
+            echo "<li class='list-group-item' id='" . $noSeqRounds[$i]->roundId . "'>
+                    " . $noSeqRounds[$i]->roundName  . "
+                    <a class='pull-right'  href='" . base_url() . "admin/Round/" .  $noSeqRounds[$i]->roundId . " ' class='btn btn-lg' role='button' >
+                      <span class=' pull-right glyphicon glyphicon-arrow-right'>
+                      </span>
+                    </a>
+                    <a class='pull-right'  href='" . base_url() . "admin/deleteRound/" .  $noSeqRounds[$i]->roundId . " ' class='btn btn-lg' role='button' onclick='return confirmation()'>
+                      <span class=' pull-right glyphicon glyphicon-remove'>
+                      </span>
+                    </a>
+                    <a class='pull-right' href='#round" . $noSeqRounds[$i]->roundId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'>
+                      <span class='glyphicon glyphicon-edit'>
+                      </span>
+                    </a>
+                  </li>";
         }
         
         echo "</ul>";

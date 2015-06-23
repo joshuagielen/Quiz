@@ -29,8 +29,7 @@
 
 
     <script>
-
-        var player = 1;
+      var player = 1;
         function add_fields() {
             player++;
             var objTo = document.getElementById('players')
@@ -39,9 +38,6 @@
             
             objTo.appendChild(divtest)
         }
-
-
-
     </script>
 	
 </head>

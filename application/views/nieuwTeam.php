@@ -19,11 +19,11 @@
                 </div>
 
         		<div id="players">
-        		<div class="form-group" >
-            		<label for="playerName">Player 1 name</label>
-            		<input type="text" class="form-control" id="playerName" placeholder="Enter name of Player" name="playerName[]" value=''>
-            		<span class='text-danger'></span>
-        		</div>
+            		<div class="form-group" >
+                		<label for="playerName">Player 1 name</label>
+                		<input type="text" class="form-control" id="playerName" placeholder="Enter name of Player" name="playerName[]" value=''>
+                		<span class='text-danger'></span>
+            		</div>
 
         		</div>
 				<a href="#"  onclick="add_fields();"  class="btn btn-lg" role="button"><span class="glyphicon glyphicon-plus-sign"></span></a></br>
