@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="<?php echo base_url();?>assets/css/reveal.css">
   <script src="<?php echo base_url();?>assets/js/jquery-1.4.4.min.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>assets/js/jquery.reveal.js" type="text/javascript"></script>
+  
   <script>
 
   $(document).ready(function(){
