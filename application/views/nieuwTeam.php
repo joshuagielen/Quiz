@@ -31,7 +31,7 @@
 
 				<input class="btn btn-lg" type="submit" value="Add team" name="addTeam">
 			<?php echo form_close(); ?>
-            <?php echo $this->session->flashdata('questionMsg'); ?>
+            <?php echo $this->session->flashdata('teamMsg'); ?>
 
 
 			
