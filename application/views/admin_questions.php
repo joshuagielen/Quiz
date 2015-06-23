@@ -93,20 +93,17 @@ function validate()
 
         function findmyvalue()
         {
-            var selectIndex = document.getElementById("types").selectedIndex;
+            var select = document.getElementById("types");
+            var type = select.options[select.selectedIndex].text;
             
-            var s = document.getElementsByName('types')[selectIndex];
-            var txt=s.options[s.selectedIndex].firstChild.nodeValue;
-            alert(txt);
-            
-            replaceContentInContainer(selectIndex);
+            replaceContentInContainer(type);
         }
 
 
-        function replaceContentInContainer(selectIndex) {
+        function replaceContentInContainer(type) {
 
-          if(selectIndex <1){
-            answer = 0;
+          if(type.toLowerCase() =="open"){
+            answer = 1;
               document.getElementById("answerType").innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer</label>' + 
                     '<input class="form-control" id="answer" name="answers[0][value]" type="text" placeholder="Enter answer value" required autofocus>' +
                     '<label for="answer1">Score of answer </label><input class="form-control" id="answer" type="number" name="answers[0][score]" placeholder="Enter score of answer" required></div></div>';
@@ -116,14 +113,8 @@ function validate()
                             '<label for="answer">Answer 1</label><input class="form-control" id="answer" name="answers[0][value]" type="text" placeholder="Enter answer value" required autofocus>' +
                             '<label for="answer1">Score of answer</label><input class="form-control" id="answer" type="number" name="answers[0][score]" placeholder="Enter score of answer" required>' +
                             '</div></div></div><a href="#"  onclick="add_fields();"  class="btn btn-lg" role="button"><span class="glyphicon glyphicon-plus-sign"></span></a></br>';
-
-          
-          }
-
-          
-            
-            
-
+           }
+   
         }
 </script>
 
@@ -216,7 +207,7 @@ function validate()
 
 
 ?>
-
+<div class="col-md-8 centered">
 <h2 class="text-left">Add question</h2>
   <form method='post' action='<?php echo base_url() ?>admin/addQuestion'>
     <div class="col-lg-8">
@@ -267,7 +258,7 @@ function validate()
 
   <?php echo $this->session->flashdata('questionMsg'); ?>
 
- 
+ </div>
 
 
 

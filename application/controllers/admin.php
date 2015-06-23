@@ -405,7 +405,7 @@ public function addNewTeam(){
     else
     {
 
-        $questionType = $this->input->post("questionType");
+        $questionType = $this->input->post("types");
         $questionGenre = $this->input->post("questionGenre");
         
         $questionGenre = $this->GenreModel->getGenreNameById($questionGenre);
