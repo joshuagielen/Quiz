@@ -26,9 +26,10 @@ class RoundModel extends CI_Model{
 	}	
 
 	function getRoundById($rId){
-		$query = $this->db->get_where('rounds', array('roundId' => $rId))->row();
-		return $query;
+		$query = $this->db->get_where('rounds', array('roundId' => $rId));
+		return $query->row();
 	}
+
 	function getRoundIdByName($roundName){
 		$roundId = $this->db->select('roundId')
                   ->get_where('rounds', array('roundName' => $roundName))
@@ -36,6 +37,27 @@ class RoundModel extends CI_Model{
                   ->roundId;
 		return $roundId;
 	}
+
+	function getRoundBySequenceNumber($seqNr){
+
+		$query = $this->db->get_where('rounds', array('roundSequenceNumber' => $seqNr));
+
+		$rowCount = $query->num_rows();
+
+		if ($rowCount == 1){
+			return $query->row()->roundId;
+		}
+		else if ($rowCount > 1){
+			show_error('multiple rounds with the same sequence number!');
+			//$this->fixSequenceError();
+			return null;			
+		}
+		else /*if ($rowCound < 1)*/{
+			return -1;
+		}
+	}
+
+
 	function fixSequenceError(){
 		$rounds = $this->getRounds();
 		$normalRoundSeq = 0;

@@ -91,3 +91,4 @@ define('node_url','http://localhost:8282');
 //db status id's
 define('currentQuestionStatusId', 4);
 define('currentRoundStatusId', 5);
+define('inRoundEndStatusId', 6);

@@ -28,12 +28,17 @@ class StatusModel extends CI_Model{
 		$data = 	array(
 					   	array(
 						    'statusId' => currentQuestionStatusId ,
-						    'statusName' => 'currentQuestion' ,
-						    'statusValue' => '0'
+						    'statusName' => 'currentQuestionId' ,
+						    'statusValue' => '-1'
 					   	),
 					   	array(
 						    'statusId' => currentRoundStatusId ,
-						    'statusName' => 'currentRound' ,
+						    'statusName' => 'currentRoundId' ,
+						    'statusValue' => '-1'
+					   	),
+					   	array(
+						    'statusId' => inRoundEndStatusId ,
+						    'statusName' => 'inRoundEnd' ,
 						    'statusValue' => '0'
 					   	)
 					);
