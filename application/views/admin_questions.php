@@ -171,11 +171,11 @@ function validate()
   </div>";
   echo "<div class='form-group' >
   <label for='questionGenre'>Genre</label>
-  <input type='text' class='form-control' id='questionGenre' placeholder='Enter genre of question' name='questionGenre' value='". $question->questionGenre ." ' disabled>
+  <input type='text' class='form-control' id='questionGenre' placeholder='Enter genre of question' name='questionGenre' value='". $question->questionGenre ." ' readOnly='true'>
   </div>";
   echo "<div class='form-group' >
   <label for='questionType'>Type</label>
-  <input type='text' class='form-control' id='questionType' placeholder='Enter type of question' name='questionType' value='". $question->questionType ." ' disabled>
+  <input type='text' class='form-control' id='questionType' placeholder='Enter type of question' name='questionType' value='". $question->questionType ." ' readOnly='true'>
   </div>";
 
   foreach($answers as $answer){
@@ -207,8 +207,11 @@ function validate()
 
 
 ?>
-<div class="col-md-8 centered">
-<h2 class="text-left">Add question</h2>
+
+
+ <div class="col-md-8 centered">
+          <h2 class="text-left">Add question</h2>
+
   <form method='post' action='<?php echo base_url() ?>admin/addQuestion'>
     <div class="col-lg-8">
               <div class="form-group">
@@ -255,10 +258,18 @@ function validate()
              
     </div>
   </form>
+            
 
-  <?php echo $this->session->flashdata('questionMsg'); ?>
 
- </div>
+      
+      
+       
+
+
+
+
+
+        </div>
 
 
 

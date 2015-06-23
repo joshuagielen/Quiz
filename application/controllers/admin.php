@@ -353,6 +353,8 @@ public function addNewTeam(){
             $questionGenre = $this->input->post("questionGenre");
 
 
+            
+           
 
 
 
@@ -381,7 +383,7 @@ public function addNewTeam(){
 
 
 
-               /*redirect(base_url('admin/questions'));*/
+               redirect(base_url('admin/questions'));
 
             }
     
@@ -432,7 +434,6 @@ public function addNewTeam(){
               $this->AnswerModel->insertAnswer($answerData);
               }
 
-              $this->session->set_flashdata('questionMsg','<div class="alert alert-success text-center">"Question and answers added!</div>');
               redirect(base_url('admin/questions'));
         }
 
