@@ -31,6 +31,7 @@
 	
 </script>
 
+
 <div class="container text-center">
 	<button id="btnNext" onclick="forward()">Forward</button>
 	<button id="btnRestart" onclick="restart()">RestartQuiz</button>

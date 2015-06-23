@@ -94,8 +94,7 @@ function validate()
       foreach ($questions as $question) {
         echo "<tr><td>" . $question->questionId . "</td><td>" . $question->questionValue  . "</td><td>" . $question->questionGenre . "</td><td>" . $question->questionType .
         "</td><td>
-        <a href='#question" . $question->questionId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'>
-        <span class='glyphicon glyphicon-edit'></span></a> 
+        <a href='#question" . $question->questionId . "'class='btn btn-lg' role='button' data-reveal-id='myModal'><span class='glyphicon glyphicon-edit'></span></a> 
 
         <a href='" . base_url() . "admin/deleteQuestion/" .  $question->questionId . " ' class='btn btn-lg' role='button' onclick='return confirmation()'><span class='glyphicon glyphicon-remove'></span></a></td></tr>";  
       }
@@ -122,10 +121,7 @@ function validate()
 
 
 
- <div class="target">
-
-
- </div>
+ <div class="target"></div>
 
 
  <?php

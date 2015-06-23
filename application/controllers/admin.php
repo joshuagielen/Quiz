@@ -400,8 +400,8 @@ public function addNewTeam(){
       $this->load->helper('url');
 
     $this->load->model('RoundModel');
-            $roundId = $this->input->post("questionId");
-            $roundName = $this->input->post("questionValue");
+            $roundId = $this->input->post("roundId");
+            $roundName = $this->input->post("roundName");
 
 
             $roundData = array(
