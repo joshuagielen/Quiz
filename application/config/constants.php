@@ -86,7 +86,7 @@ define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 //custom variables
-define('node_url','http://localhost:8282');
+define('node_url','http://192.168.0.136:8282');
 
 //db status id's
 define('currentQuestionStatusId', 4);
