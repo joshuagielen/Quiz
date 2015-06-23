@@ -387,14 +387,14 @@ public function addNewTeam(){
     {
       $questionId = $this->QuestionModel->getQuestionIdByName($questionValue);
       $answers =  $this->input->post("answers");
-      print_r($answers);
+      
 
         foreach($answers as $answer){
+          
           $answerData = array(
                             "questionId" => $questionId,
-                            "answerValue" => $answer->value,
-                            "answerScoreValue" => $answer->score,
-                            "answerCorrectness" => $answer->correct
+                            "answerValue" => $answer['value'],
+                            "answerScoreValue" => $answer['score']
                             );
 
           $this->AnswerModel->insertAnswer($answerData);
@@ -406,7 +406,7 @@ public function addNewTeam(){
 
     }
 
-    /*redirect(base_url('admin/questions'));*/
+    redirect(base_url('admin/questions'));
     
   }
   public function deleteRound($roundId){

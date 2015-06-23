@@ -77,19 +77,23 @@ function validate()
 </script>
 <script>
         var answer = 1;
+        var count = 0;
         function add_fields() {
             answer++;
+            count++;
             var objTo = document.getElementById('answers')
             var divtest = document.createElement("div");
-            divtest.innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer ' + answer + ' </label><input class="form-control" id="answer" name="answer[,]" type="text" placeholder="Enter answer value" required autofocus><label for="answer1">Score of answer </label><input class="form-control" id="answer" type="text" name="answer[,]" placeholder="Enter score of answer" required><label for="answer">This question is correct?</label><input type="checkbox" name="answer[,]"></div></div>';
+            divtest.innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer ' + answer + ' </label><input class="form-control" id="answer" name="answers[' + count + '][value]" type="text" placeholder="Enter answer value" required autofocus><label for="answer1">Score of answer </label><input class="form-control" id="answers" type="text" name="answers[' + count + '][score]" placeholder="Enter score of answer" required></div></div>';
             
             objTo.appendChild(divtest)
+            window.scrollTo(0,document.body.scrollHeight);
         }
 
 
         function findmyvalue()
         {
-            var selectIndex = document.getElementById("questionType").value;
+            var selectIndex = document.getElementById("types").selectedIndex;
+            alert(selectIndex);
 
             
             replaceContentInContainer(selectIndex);
@@ -98,17 +102,16 @@ function validate()
 
         function replaceContentInContainer(selectIndex) {
 
-          if(selectIndex <=1){
+          if(selectIndex <1){
+            answer = 0;
               document.getElementById("answerType").innerHTML = '<div class="form-group"><div class="form-inline "><label for="answer">Answer</label>' + 
-                    '<input class="form-control" id="answer" name="answer[][value]" type="text" placeholder="Enter answer value" required autofocus>' +
-                    '<label for="answer1">Score of answer </label><input class="form-control" id="answer" type="text" name="answer[][score]" placeholder="Enter score of answer" required>' +
-                    '<input type="checkbox" name="answer[][correct]" checked hidden></div></div>';
+                    '<input class="form-control" id="answer" name="answers[0][value]" type="text" placeholder="Enter answer value" required autofocus>' +
+                    '<label for="answer1">Score of answer </label><input class="form-control" id="answer" type="text" name="answers[0][score]" placeholder="Enter score of answer" required></div></div>';
 
           }else{
             document.getElementById("answerType").innerHTML = '<div id="answers"><div class="form-group"><div class="form-inline ">' +
-                            '<label for="answer">Answer 1</label><input class="form-control" id="answer" name="answer[][value]" type="text" placeholder="Enter answer value" required autofocus>' +
-                            '<label for="answer1">Score of answer</label><input class="form-control" id="answer" type="text" name="answer[][score]" placeholder="Enter score of answer" required>' +
-                            '<label for="answer">This question is correct?</label><input type="checkbox" name="answer[][correct]"checked>' +
+                            '<label for="answer">Answer 1</label><input class="form-control" id="answer" name="answers[0][value]" type="text" placeholder="Enter answer value" required autofocus>' +
+                            '<label for="answer1">Score of answer</label><input class="form-control" id="answer" type="text" name="answers[0][score]" placeholder="Enter score of answer" required>' +
                             '</div></div></div><a href="#"  onclick="add_fields();"  class="btn btn-lg" role="button"><span class="glyphicon glyphicon-plus-sign"></span></a></br>';
 
           
@@ -219,9 +222,8 @@ function validate()
 
               <div class="form-group">
                     <div class="form-inline "><label for="answer">Answer</label>
-                        <input class="form-control" id="answers" name="answers[][value]" type="text" placeholder="Enter answer value" required >
-                        <label for="answer1">Score of answer </label><input class="form-control" id="answers" type="text" name="answers[][score]" placeholder="Enter score of answer" required>
-                        <input id="answers" type="checkbox" name="answers[][correct]" checked hidden>
+                        <input class="form-control" id="answers" name="answers[0][value]" type="text" placeholder="Enter answer value" required >
+                        <label for="answer1">Score of answer </label><input class="form-control" id="answers" type="text" name="answers[0][score]" placeholder="Enter score of answer" required>
                     </div>
               </div>
 
