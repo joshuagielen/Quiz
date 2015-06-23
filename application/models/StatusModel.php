@@ -23,7 +23,7 @@ class StatusModel extends CI_Model{
 
 		$this->dbforge->add_field($fields);
 		$this->dbforge->add_key('statusId', TRUE);
-		$this->dbforge->create_table('status');*/		
+		$this->dbforge->create_table('status');*/
 		$this->db->empty_table('status');
 
 		$data = 	array(
@@ -63,8 +63,21 @@ class StatusModel extends CI_Model{
 	}
 
 	function getStatus($statusId){
-		return $this->db->get_where('status',array('statusId' => $statusId))->Row()->statusValue;
+		$query = $this->db->get_where('status',array('statusId' => $statusId));
 
+		$rowCount = $query->num_rows();
+
+		if ($rowCount == 1){
+			return $query->Row()->statusValue;
+		}
+		else if ($rowCount > 1){
+			show_error('multiple stati\'s');
+			//$this->fixSequenceError();
+			return -2;
+		}
+		else /*if ($rowCound < 1)*/{
+			return -1;
+		}
 	}
 }
 

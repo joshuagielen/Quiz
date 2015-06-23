@@ -389,6 +389,8 @@ public function addNewTeam(){
     
   }
   public function addQuestion(){
+
+
     $this->load->helper('url');
 
     $this->load->model('QuestionModel');
@@ -567,11 +569,17 @@ public function addNewTeam(){
     $inQuizEnd = $this->StatusModel->getStatus(inQuizEndStatusId);
     $data['inQuizEnd'] = $inQuizEnd;
 
+    if ($currRoundId == null){      
+      $this->StatusModel->initQuiz();
+    }
+    $this->StatusModel->initQuiz();
+
     
     if ($currRoundId == -1 && $currQuestionId == -1){
       $q = $this->QuestionQueueModel->QuestionZero();
       if (is_int($q)){
-        $data['qzero'] == "none";
+        $data['qId'] = -1;
+        $data['rId'] = -1;        
       }
       else{
         $data['qId'] = $q->questionId;
@@ -610,6 +618,9 @@ public function addNewTeam(){
     $currQuestionId = $this->StatusModel->getStatus(currentQuestionStatusId);
     $inRoundEnd = $this->StatusModel->getStatus(inRoundEndStatusId);
     $inQuizEnd = $this->StatusModel->getStatus(inQuizEndStatusId);
+
+    
+
     if($inQuizEnd){
       $currRoundId = -1;
       $currQuestionId = -1;
