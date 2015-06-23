@@ -237,7 +237,7 @@ function validate()
               </div>
                <div class="form-group">
                   <label for="questionType">Type</label>
-                  <select class="form-control" onclick="findmyvalue()"  id="types" name="types">
+                  <select class="form-control" onchange="findmyvalue()"  id="types" name="types">
                       <?php
                         foreach($types as $type){
                             echo "<option value='" . $type->typeId . "'>" . $type->typeName . "</option>";
